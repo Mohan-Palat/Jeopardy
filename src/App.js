@@ -22,10 +22,16 @@ class App extends Component {
        <ScoreKeeper score={this.state.score}/>
        <Gameboard/>
        <QuestionDisplay question={this.state.currentClue.question}/>
-       <Inputform/>
+       <Inputform verifyAnswer={this.verifyAnswer}/>
       </>
     );
   }
+  
+  verifyAnswer = (response) => {
+    console.log ('Answer', response)
+
+  }
+
 }
 
 export default App;
