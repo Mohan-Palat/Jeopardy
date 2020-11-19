@@ -4,6 +4,7 @@ class Clue extends Component {
   constructor(props){
     super(props);
 
+    // keep track of whether clue has been clicked, Question should remain hidden until it has been clicked
     this.state ={
         hasBeenClicked: false,
     }
