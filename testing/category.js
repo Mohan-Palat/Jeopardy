@@ -1,4 +1,4 @@
-{
+const jeopardy = {
     "id": 14124,
     "title": "sports by the numbers",
     "clues_count": 5,
@@ -55,3 +55,5 @@
         }
     ]
 }
+
+export default jeopardy;
