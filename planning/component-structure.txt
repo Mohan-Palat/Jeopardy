@@ -1,0 +1,56 @@
+ - App 
+   - Game Board
+        - category
+            - list of clues (Container)
+                - clue
+   - Score keeper
+   - Question Display
+   - Input Form
+
+
+
+ API callouts:
+ ------------------
+ (Game Board) --> make callout to get 6 random categories
+ (Category) --> make callout to get list of clues (pass it down Clues Container)
+
+ States:
+ ------------------
+ (App) --> Score
+       --> Current Clue
+       --> Current User Input 
+
+ (Game Board) --> array of categories (will pass down)
+
+
+ Props:
+ -------------------
+ (Category) --> name of category
+ (Clue) --> method to pass clue object to the App Container
+
+
+
+ Features:
+ - 6 categories are randomly generated
+ - 5 clues per each category {question, answer, value}
+ - score tracking
+ - capture answer (input form)
+ - question selection
+
+ User Stories:
+ 1. As a user, I should be given 6 random categories
+ 2. As a user, when I get a question correct, my score should increase
+ 3. As a user, when I get a question incorrect, my score should decrease
+ 4. As a user, I should be able to select a question
+ 5. As a user, I should see 5 questions under each category
+ 6. As a user, I should be able to enter my answer and have it validated
+ 7. As a user, when I answer a question, I should not be able to answer it again
+
+
+ MVP:
+ 1. Get & Display 6 random categories
+ 2. Show questions when you click on square
+ 3. Deploy on Heroku/ Github pages
+
+ Future Ideas:
+ - multi player game
