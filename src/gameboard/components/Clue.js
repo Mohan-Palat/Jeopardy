@@ -12,9 +12,9 @@ class Clue extends Component {
 
   render() {
     return (
-      <>
-      <h4>{this.props.question}</h4>
-      </>
+      <div class='clue'>
+      <h4>{this.props.value}</h4>
+      </div>
     );
   }
 }
