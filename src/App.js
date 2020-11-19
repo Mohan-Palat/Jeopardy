@@ -22,7 +22,7 @@ class App extends Component {
        <ScoreKeeper score={this.state.score}/>
        <Gameboard setClue={this.setClue}/>
        <QuestionDisplay question={this.state.currentClue.question}/>
-       <Inputform/>
+       <Inputform setScore={this.setScore}/>
       </>
     );
   }
