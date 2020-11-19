@@ -10,7 +10,8 @@ class Category extends Component {
     return (
       <>
       <h3>{this.props.title}</h3>
-      <Clues clues = {this.props.clues}/>
+      <Clues clues = {this.props.clues} 
+             setClue={this.props.setClue}/>
       </>
     );
   }
