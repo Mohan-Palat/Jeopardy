@@ -32,6 +32,18 @@ class App extends Component {
     // if so, increment score
     // it not, decrement score
     //set Score will be called from within in this method
+    let newScore = 0;
+    if(userInput.toLowerCase() === this.state.currentClue.answer.toLocaleLowerCase()){
+      newScore = this.state.score + this.state.currentClue.value
+    } else {
+      newScore = this.state.score - this.state.currentClue.value
+    }
+    
+    console.log('new score: ', newScore) 
+    
+    this.setState({
+      score: newScore
+    })
   }
 
   setClue = (clue) => {
