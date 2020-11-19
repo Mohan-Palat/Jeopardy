@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Gameboard from './gameboard/components/Gameboard'
+import Inputform from './Inputform'
 
 class App extends Component {
   constructor(props){
@@ -18,6 +19,7 @@ class App extends Component {
       <>
        <h1>Jeopardy</h1>
        <Gameboard/>
+       <Inputform/>
       </>
     );
   }
