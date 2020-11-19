@@ -13,6 +13,7 @@ class Clue extends Component {
   }
 
   // On click, change the display from numeric value to the question
+  // Send clue prop to App
   handleClick = (e)=>{
       console.log('clicked!')
       this.setState({
