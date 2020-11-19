@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Clues from './Clues';
+import Clue from './Clue';
 
-class Category extends Component {
+class Clues extends Component {
   constructor(props){
     super(props);
   }
@@ -9,11 +9,11 @@ class Category extends Component {
   render() {
     return (
       <>
-      <h3>Category</h3>
-      <Clues/>
+      <h3>Clues</h3>
+      <Clue/>
       </>
     );
   }
 }
 
-export default Category;
+export default Clues;
