@@ -4,6 +4,7 @@ import ScoreKeeper from './ScoreKeeper'
 import Inputform from './Inputform'
 import QuestionDisplay from './QuestionDisplay'
 import category from './testing/category'
+import './App.css'
 
 class App extends Component {
   constructor(props){
@@ -18,11 +19,20 @@ class App extends Component {
   render() {
     return (
       <>
-       <h1>Jeopardy</h1>
-       <ScoreKeeper score={this.state.score}/>
-       <Gameboard setClue={this.setClue}/>
-       <QuestionDisplay question={this.state.currentClue.question}/>
-       <Inputform setScore={this.setScore}/>
+       <h1 id="title">Jeopardy</h1>
+       <div id="main">
+          <div className="game-board">
+              <Gameboard setClue={this.setClue}/>
+          </div>
+          <div className="side-panel">
+              <QuestionDisplay question={this.state.currentClue.question}/>
+              <Inputform setScore={this.setScore}/>
+          </div>
+       </div>
+       <br/>
+       <div className="score">
+          <ScoreKeeper score={this.state.score}/>
+       </div>
       </>
     );
   }
