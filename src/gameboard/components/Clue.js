@@ -4,7 +4,8 @@ class Clue extends Component {
   constructor(props){
     super(props);
 
-    // keep track of whether clue has been clicked, Question should remain hidden until it has been clicked
+    // keep track of whether clue has been clicked
+    // Clue should diplay value first, once it has been clicked, it should display the question
     this.state ={
         hasBeenClicked: false,
     }
@@ -13,7 +14,7 @@ class Clue extends Component {
   render() {
     return (
       <div class='clue'>
-      <h4>{this.props.value}</h4>
+      <h4>{this.props.clue.value}</h4>
       </div>
     );
   }

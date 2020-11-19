@@ -5,7 +5,7 @@ class Clues extends Component {
   
   render() {
     const clues = this.props.clues.map((clue)=>{
-        return <Clue value={clue.value} question={clue.question} answer = {clue.answer}/>
+        return <Clue clue={clue}/>
     })
     return (
       <>
