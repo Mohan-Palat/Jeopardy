@@ -6,12 +6,12 @@ class Gameboard extends Component {
   constructor(props){
     super(props);
   }
-
+  
   render() {
     return (
       <>
       <h3>Gameboard</h3>
-      <Category title = {category.title}/>
+      <Category title = {category.title} clues = {category.clues}/>
       </>
     );
   }

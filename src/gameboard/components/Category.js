@@ -10,7 +10,7 @@ class Category extends Component {
     return (
       <>
       <h3>{this.props.title}</h3>
-      <Clues/>
+      <Clues clues = {this.props.clues}/>
       </>
     );
   }
