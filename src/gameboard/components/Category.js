@@ -9,7 +9,7 @@ class Category extends Component {
   render() {
     return (
       <>
-      <h3>Category</h3>
+      <h3>{this.props.title}</h3>
       <Clues/>
       </>
     );
