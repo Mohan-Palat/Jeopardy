@@ -20,11 +20,24 @@ class App extends Component {
       <>
        <h1>Jeopardy</h1>
        <ScoreKeeper score={this.state.score}/>
-       <Gameboard/>
+       <Gameboard setClue={this.setClue}/>
        <QuestionDisplay question={this.state.currentClue.question}/>
        <Inputform/>
       </>
     );
+  }
+
+  setScore = (userInput) => {
+    // will check if user input = currentClue.answer
+    // if so, increment score
+    // it not, decrement score
+    //set Score will be called from within in this method
+  }
+
+  setClue = (clue) => {
+    this.setState({
+      currentClue: clue
+    })
   }
 }
 
