@@ -34,7 +34,7 @@ class Inputform extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     // console.log ('User response from inputform', this.state.response)
-    this.props.verifyAnswer(this.state.response)
+    this.props.setScore(this.state.response)
 
   }
 
