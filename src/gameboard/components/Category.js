@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Category from './Category';
 
-class Gameboard extends Component {
+class Category extends Component {
   constructor(props){
     super(props);
   }
@@ -9,11 +8,10 @@ class Gameboard extends Component {
   render() {
     return (
       <>
-      <h3>Gameboard</h3>
-      <Category/>
+      <h3>Category</h3>
       </>
     );
   }
 }
 
-export default Gameboard;
+export default Category;
