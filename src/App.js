@@ -47,6 +47,7 @@ class App extends Component {
   }
 
   setClue = (clue) => {
+    console.log('setClue called',clue);
     this.setState({
       currentClue: clue
     })

@@ -19,7 +19,8 @@ class Clue extends Component {
       this.setState({
           hasBeenClicked:true,
           displayValue: this.props.clue.question
-      })
+      });
+      this.props.setClue(this.props.clue);
   }
 
   render() {
