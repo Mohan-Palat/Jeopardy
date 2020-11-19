@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Gameboard from './gameboard/components/Gameboard'
 
 class App extends Component {
   constructor(props){
@@ -16,6 +17,7 @@ class App extends Component {
     return (
       <>
        <h1>Jeopardy</h1>
+       <Gameboard/>
       </>
     );
   }
