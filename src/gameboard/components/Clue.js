@@ -4,7 +4,7 @@ class Clue extends Component {
   constructor(props){
     super(props);
 
-    // Keep track of whether clue has been clicked
+    // Keep track of whether clue has been clicked. Should not be able to click same clue twice
     // Clue should diplay value first, once it has been clicked, it should display the question
     this.state ={
         hasBeenClicked: false,
@@ -16,11 +16,14 @@ class Clue extends Component {
   // Send clue prop to App
   handleClick = (e)=>{
       console.log('clicked!')
-      this.setState({
-          hasBeenClicked:true,
-          displayValue: this.props.clue.question
-      });
-      this.props.setClue(this.props.clue);
+      if(this.state.hasBeenClicked===false){
+        this.setState({
+            hasBeenClicked:true,
+            displayValue: this.props.clue.question
+        });
+        this.props.setClue(this.props.clue);
+      }
+      
   }
 
   render() {
