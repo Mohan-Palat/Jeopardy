@@ -3,6 +3,7 @@ import Gameboard from './gameboard/components/Gameboard'
 import ScoreKeeper from './ScoreKeeper'
 import Inputform from './Inputform'
 import QuestionDisplay from './QuestionDisplay'
+import NewGame from './NewGame'
 import category from './testing/category'
 import './App.css'
 import categoryIds from './data/categoryIds'
@@ -23,6 +24,7 @@ class App extends Component {
     return (
       <>
        <h1 id="title">Jeopardy</h1>
+       <NewGame getCategoryIds={this.getCategoryIds}/>
        <div id="main">
           <div className="game-board">
               <Gameboard setClue={this.setClue} idNums={this.state.categoryIds}/>

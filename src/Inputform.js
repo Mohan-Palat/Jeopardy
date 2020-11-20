@@ -12,7 +12,6 @@ class Inputform extends Component {
   render() {
     return (
       <>
-        <h3>Input Form</h3>
         <form onSubmit={this.handleSubmit} >
           <input    type="text"
                     value={this.state.answer}
