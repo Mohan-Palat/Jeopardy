@@ -29,7 +29,7 @@ class Clue extends Component {
   render() {
     return (
       <div className='clue' onClick={this.handleClick}>
-      <h4>{this.state.displayValue}</h4>
+      <div className='clue-contents'> ${this.state.displayValue}</div>
       </div>
     );
   }
