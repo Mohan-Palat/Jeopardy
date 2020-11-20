@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Category from './Category';
-import category from '../../testing/category'
 import axios from 'axios';
 
 class Gameboard extends Component {
@@ -12,21 +11,22 @@ class Gameboard extends Component {
       }
   }
 
+  // Calls jservice API to get a single category by ID
   getCategoryFromID = (id) =>{
     const jserviceURL = 'http://jservice.io/api/category?id='+id;
         return axios.get(jserviceURL)
   }
 
   /**
-   * 
+   * Given an array of numbers, pull data from jservice API by id for each number
    * @param {*} numbers Array of ID numbers
    */
   getCategoriesFromIDs = (numbers) =>{
     numbers.forEach((id)=>{
         this.getCategoryFromID(id)
         .then((response)=>{
-            console.log('axios data:',response.data)
 
+            //Push API output into categories array
             this.setState(prevState=>({
                 categories:[...prevState.categories,response.data]
             }));
@@ -40,9 +40,10 @@ class Gameboard extends Component {
 
   componentDidMount() {
     // Get 6 random numbers and put them in array
-    const categoryIDs = [14124];
+    const categoryIDs = [14124,12345];
 
     this.getCategoriesFromIDs(categoryIDs);
+    //this.getCategoriesFromIDs(this.props.idNums);
     
     console.log('current state: ',this.state.categories);
   }
@@ -66,13 +67,11 @@ class Gameboard extends Component {
         catsToRender = <></>;
     }
     
-    console.log('current state (render after if): ',this.state.categories);
-    console.log('cats to render:',catsToRender);
     return (
-      <>
+      <div className="gameboard">
       <h3>Gameboard</h3>
        {catsToRender}
-      </>
+      </div>
     );
   }
 }
