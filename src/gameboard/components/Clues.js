@@ -7,7 +7,8 @@ class Clues extends Component {
     const clues = this.props.clues.map((clue,index)=>{
         return <Clue clue={clue}
                      setClue={this.props.setClue}
-                     key={index}/>
+                     key={index}
+                     clueIsActive = {this.props.clueIsActive}/>
     })
     return (
       <>

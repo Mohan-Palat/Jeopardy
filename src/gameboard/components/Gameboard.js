@@ -48,6 +48,7 @@ class Gameboard extends Component {
     console.log(this.props.idNums)
     
     console.log('current state: ',this.state.categories);
+    console.log('App clue is active', this.props.clueIsActive)
   }
 
   render() {
@@ -61,7 +62,8 @@ class Gameboard extends Component {
             return <Category title={category.title}
                               clues={category.clues}
                               setClue={this.props.setClue}
-                              key = {category.id}/>
+                              key = {category.id}
+                              clueIsActive = {this.props.clueIsActive}/>
         });
     }
     else{

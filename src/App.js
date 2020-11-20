@@ -16,14 +16,15 @@ class App extends Component {
       currentClue: {},
       userInput: '',
       inputDisabled: true,
-      categoryIds: []
+      categoryIds: [],
+      clueIsActive: false
     }
   }
 
   render() {
     let gameBoard = <NewGame getCategoryIds={this.getCategoryIds}/>
     if(this.state.categoryIds.length === 6){
-      gameBoard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds}/>
+      gameBoard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>
     }
     return (
       <>
@@ -96,10 +97,16 @@ class App extends Component {
   // Sets clue passed from Clue and enables Input
   setClue = (clue) => {
     console.log('setClue called',clue);
-    this.setState({
-      currentClue: clue,
-      inputDisabled: false
-    })
+
+    console.log(this.state.clueIsActive);
+      if(!this.state.clueIsActive){
+        this.setState({
+          currentClue: clue,
+          inputDisabled: false,
+          clueIsActive: true,
+        });
+      }
+      
   }
 }
 
