@@ -47,3 +47,11 @@ body {
   font-size: 20px;
   font-family: 'Anton', sans-serif;
 }
+
+.gameboard {
+  display: grid;
+  grid-template-columns: 120px 120px 120px 120px 120px 120px;
+  column-gap: 7px;
+  row-gap: 7px;
+  
+}
