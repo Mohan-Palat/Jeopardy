@@ -21,14 +21,13 @@ class App extends Component {
   }
 
   render() {
-    let gameBoard = <button onClick={this.getCategoryIds}>Set Game</button>
+    let gameBoard = <NewGame getCategoryIds={this.getCategoryIds}/>
     if(this.state.categoryIds.length === 6){
       gameBoard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds}/>
     }
     return (
       <>
        <h1 id="title">Jeopardy</h1>
-       <NewGame getCategoryIds={this.getCategoryIds}/>
        <div id="main">
           <div className="game-board">
               {gameBoard}
