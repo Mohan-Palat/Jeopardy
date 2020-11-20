@@ -30,3 +30,20 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
 }
+
+/* .clue {
+  color: rgb(208, 162, 89);
+  background-color: rgb(0, 16, 110);
+  text-shadow:  .02em .02em rgb(0, 0, 0),
+                .04em .04em rgb(0, 0, 0),
+                .06em .06em rgb(0, 0, 0),
+                .08em .08em rgb(0, 0, 0),
+                .10em .10em rgb(0, 0, 0),
+                .10em .10em rgb(0, 0, 0),                
+                .12em .12em rgb(0, 0, 0),
+                .14em .14em rgb(0, 0, 0),
+                .16em .16em rgb(0, 0, 0);
+
+  font-size: 20px;
+  font-family: 'Anton', sans-serif;
+} */
