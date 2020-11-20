@@ -7,6 +7,7 @@ import NewGame from './NewGame'
 import category from './testing/category'
 import './App.css'
 import categoryIds from './data/categoryIds'
+import { Route, Link } from 'react-router-dom'
 
 class App extends Component {
   constructor(props){
@@ -29,6 +30,7 @@ class App extends Component {
     return (
       <>
        <h1 id="title">Jeopardy</h1>
+       <Route path='/' exact render={() => <h1>Landing Page test</h1> }/>
        <div id="main">
           <div className="game-board">
               {gameBoard}
