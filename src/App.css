@@ -14,9 +14,6 @@ body {
   width: 100%
 } */
 
-.game-board, .side-panel {
-  /* border: 1px solid red; */
-}
 
 .gameboard {
   display: grid;
