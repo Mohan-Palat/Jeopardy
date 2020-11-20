@@ -16,7 +16,8 @@ class App extends Component {
       currentClue: {},
       userInput: '',
       inputDisabled: true,
-      categoryIds: []
+      categoryIds: [],
+      clueIsActive: false
     }
   }
 
@@ -96,10 +97,16 @@ class App extends Component {
   // Sets clue passed from Clue and enables Input
   setClue = (clue) => {
     console.log('setClue called',clue);
-    this.setState({
-      currentClue: clue,
-      inputDisabled: false
-    })
+
+    console.log(this.state.clueIsActive);
+      if(!this.state.clueIsActive){
+        this.setState({
+          currentClue: clue,
+          inputDisabled: false,
+          clueIsActive: true,
+        });
+      }
+      
   }
 }
 
