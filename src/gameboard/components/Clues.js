@@ -4,13 +4,14 @@ import Clue from './Clue';
 class Clues extends Component {
   
   render() {
-    const clues = this.props.clues.map((clue)=>{
+    const clues = this.props.clues.map((clue,index)=>{
         return <Clue clue={clue}
-                     setClue={this.props.setClue}/>
+                     setClue={this.props.setClue}
+                     key={index}/>
     })
     return (
       <>
-      <h3>Clues</h3>
+      <h3 className="clue">Clues</h3>
       {clues}
       </>
     );

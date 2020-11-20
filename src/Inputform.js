@@ -13,11 +13,13 @@ class Inputform extends Component {
     return (
       <>
         <h3>Input Form</h3>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} >
           <input    type="text"
+                    value={this.state.answer}
                     onChange={this.onTextBoxChange}
-                    placeholder="Anwser here" />
-          <button type="submit">Submit Answer</button>
+                    placeholder="Anwser here"
+                    disabled={this.props.isDisabled} />
+          <button type="submit" disabled={this.props.isDisabled}>Submit Answer</button>
         </form>
       </>
     );
@@ -27,14 +29,18 @@ class Inputform extends Component {
     // console.log ('Response', )
 
     this.setState({
-      response: event.target.value
+      answer: event.target.value
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     // console.log ('User response from inputform', this.state.response)
-    this.props.setScore(this.state.response)
+    this.props.setScore(this.state.answer)
+
+    this.setState({
+        answer: ''
+    })
 
   }
 
