@@ -12,7 +12,7 @@ class Clues extends Component {
     })
     return (
       <>
-      <h3 className="clue">{this.props.title}</h3>
+      <h3 className="clue-category">{this.props.title}</h3>
       {clues}
       </>
     );
