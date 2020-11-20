@@ -23,4 +23,3 @@ const ids = [
 
 export default ids
 
-// 1452 = 10 clues (we should account for this)
