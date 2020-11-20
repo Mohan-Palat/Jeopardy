@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Category from './Category';
-import category from '../../testing/category'
 import axios from 'axios';
 
 class Gameboard extends Component {
@@ -12,21 +11,22 @@ class Gameboard extends Component {
       }
   }
 
+  // Calls jservice API to get a single category by ID
   getCategoryFromID = (id) =>{
     const jserviceURL = 'http://jservice.io/api/category?id='+id;
         return axios.get(jserviceURL)
   }
 
   /**
-   * 
+   * Given an array of numbers, pull data from jservice API by id for each number
    * @param {*} numbers Array of ID numbers
    */
   getCategoriesFromIDs = (numbers) =>{
     numbers.forEach((id)=>{
         this.getCategoryFromID(id)
         .then((response)=>{
-            console.log('axios data:',response.data)
 
+            //Push API output into categories array
             this.setState(prevState=>({
                 categories:[...prevState.categories,response.data]
             }));
@@ -40,9 +40,10 @@ class Gameboard extends Component {
 
   componentDidMount() {
     // Get 6 random numbers and put them in array
-    const categoryIDs = [14124];
+    const categoryIDs = [14124,12345];
 
     this.getCategoriesFromIDs(categoryIDs);
+    //this.getCategoriesFromIDs(this.props.idNums);
     
     console.log('current state: ',this.state.categories);
   }
@@ -50,12 +51,15 @@ class Gameboard extends Component {
   render() {
 
     let catsToRender;
-    if(this.state.categories > 0){
+    console.log('current state (render before if): ',this.state.categories);
+
+    if(this.state.categories.length > 0){
          console.log('catergoies has data!')
-         catsToRender = this.state.categories||[].map((category)=>{
+         catsToRender = this.state.categories.map((category)=>{
             return <Category title={category.title}
                               clues={category.clues}
-                              setClue={this.props.setClue}/>
+                              setClue={this.props.setClue}
+                              key = {category.id}/>
         });
     }
     else{
@@ -63,16 +67,11 @@ class Gameboard extends Component {
         catsToRender = <></>;
     }
     
-    console.log('current state (render): ',this.state.categories);
-    console.log('cats to render:',catsToRender);
     return (
-      <>
+      <div className="gameboard">
       <h3>Gameboard</h3>
-      <Category title = {category.title} 
-                clues = {category.clues} 
-                setClue={this.props.setClue}/>
-       {/* {catsToRender} */}
-      </>
+       {catsToRender}
+      </div>
     );
   }
 }
