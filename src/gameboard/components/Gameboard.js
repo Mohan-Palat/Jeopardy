@@ -50,12 +50,15 @@ class Gameboard extends Component {
   render() {
 
     let catsToRender;
-    if(this.state.categories > 0){
+    console.log('current state (render before if): ',this.state.categories);
+
+    if(this.state.categories.length > 0){
          console.log('catergoies has data!')
-         catsToRender = this.state.categories||[].map((category)=>{
+         catsToRender = this.state.categories.map((category)=>{
             return <Category title={category.title}
                               clues={category.clues}
-                              setClue={this.props.setClue}/>
+                              setClue={this.props.setClue}
+                              key = {category.id}/>
         });
     }
     else{
@@ -63,15 +66,12 @@ class Gameboard extends Component {
         catsToRender = <></>;
     }
     
-    console.log('current state (render): ',this.state.categories);
+    console.log('current state (render after if): ',this.state.categories);
     console.log('cats to render:',catsToRender);
     return (
       <>
       <h3>Gameboard</h3>
-      <Category title = {category.title} 
-                clues = {category.clues} 
-                setClue={this.props.setClue}/>
-       {/* {catsToRender} */}
+       {catsToRender}
       </>
     );
   }
