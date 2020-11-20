@@ -10,7 +10,7 @@ class Clues extends Component {
     })
     return (
       <>
-      <h3>Clues</h3>
+      <h3 className="clue">Clues</h3>
       {clues}
       </>
     );
