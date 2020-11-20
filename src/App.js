@@ -36,7 +36,6 @@ class App extends Component {
        <div className="score">
           <ScoreKeeper score={this.state.score}/>
        </div>
-       <button onClick={this.getCategoryIds}> Get Categories Test </button>
       </>
     );
   }
