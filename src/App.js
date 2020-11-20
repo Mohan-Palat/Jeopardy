@@ -5,6 +5,7 @@ import Inputform from './Inputform'
 import QuestionDisplay from './QuestionDisplay'
 import category from './testing/category'
 import './App.css'
+import categoryIds from './data/categoryIds'
 
 class App extends Component {
   constructor(props){
@@ -14,6 +15,7 @@ class App extends Component {
       currentClue: {},
       userInput: '',
       inputDisabled: true,
+      categoryIds: []
     }
   }
 
@@ -23,7 +25,7 @@ class App extends Component {
        <h1 id="title">Jeopardy</h1>
        <div id="main">
           <div className="game-board">
-              <Gameboard setClue={this.setClue}/>
+              <Gameboard setClue={this.setClue} idNums={this.state.categoryIds}/>
           </div>
           <div className="side-panel">
               <QuestionDisplay question={this.state.currentClue.question}/>
@@ -34,8 +36,35 @@ class App extends Component {
        <div className="score">
           <ScoreKeeper score={this.state.score}/>
        </div>
+       <button onClick={this.getCategoryIds}> Get Categories Test </button>
       </>
     );
+  }
+
+  getCategoryIds = () => {
+    // Initialize variables
+    let randomIndex = 0;
+    let ids = categoryIds                     // Ids from whole dataset
+    let newArray = this.state.categoryIds     // Initialized to current state of ids
+
+    // set 6 random Ids 
+    for(let i = 0; i < 6; i++){
+      //get random index
+      randomIndex = Math.floor(Math.random() * ids.length)
+
+      //add to new array
+      newArray.push(ids[randomIndex])
+
+      //remove from ids array
+      ids.splice(randomIndex,1)
+    }
+    
+    //set State
+    this.setState({
+      categoryIds: newArray
+    })
+
+    console.log(this.state.categoryIds)
   }
 
   setScore = (userInput) => {
