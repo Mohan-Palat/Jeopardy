@@ -9,7 +9,8 @@ class Category extends Component {
       {/* <h3 className='category-heading'>{this.props.title}</h3> */}
       <Clues clues = {this.props.clues} 
              setClue={this.props.setClue}
-             title={this.props.title}/>
+             title={this.props.title}
+             clueIsActive={this.props.clueIsActive}/>
       </div>
     );
   }

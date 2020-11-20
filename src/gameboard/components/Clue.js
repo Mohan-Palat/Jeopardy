@@ -16,7 +16,8 @@ class Clue extends Component {
   // Send clue prop to App
   handleClick = (e)=>{
       console.log('clicked!')
-      if(this.state.hasBeenClicked===false){
+      console.log('App clue is Active:', this.props.clueIsActive)
+      if(this.state.hasBeenClicked===false&& this.props.clueIsActive === false){
         this.setState({
             hasBeenClicked:true,
             displayValue: this.props.clue.question

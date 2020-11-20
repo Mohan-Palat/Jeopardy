@@ -24,7 +24,7 @@ class App extends Component {
   render() {
     let gameBoard = <NewGame getCategoryIds={this.getCategoryIds}/>
     if(this.state.categoryIds.length === 6){
-      gameBoard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds}/>
+      gameBoard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>
     }
     return (
       <>
