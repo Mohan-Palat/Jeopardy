@@ -13,7 +13,7 @@ class App extends Component {
       score:0,
       currentClue: {},
       userInput: '',
-      
+      inputDisabled: true,
     }
   }
 
@@ -27,7 +27,7 @@ class App extends Component {
           </div>
           <div className="side-panel">
               <QuestionDisplay question={this.state.currentClue.question}/>
-              <Inputform setScore={this.setScore}/>
+              <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
           </div>
        </div>
        <br/>
@@ -53,14 +53,17 @@ class App extends Component {
     console.log('new score: ', newScore) 
     
     this.setState({
-      score: newScore
+      score: newScore,
+      inputDisabled: true,
+      currentClue: {}
     })
   }
 
   setClue = (clue) => {
     console.log('setClue called',clue);
     this.setState({
-      currentClue: clue
+      currentClue: clue,
+      inputDisabled: false
     })
   }
 }
