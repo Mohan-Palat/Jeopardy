@@ -90,7 +90,8 @@ class App extends Component {
     this.setState({
       score: newScore,
       inputDisabled: true,
-      currentClue: {}
+      currentClue: {},
+      clueIsActive: false,
     })
   }
 
