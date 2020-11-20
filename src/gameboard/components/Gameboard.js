@@ -71,7 +71,6 @@ class Gameboard extends Component {
     
     return (
       <div className="gameboard">
-      <h3>Gameboard</h3>
        {catsToRender}
       </div>
     );

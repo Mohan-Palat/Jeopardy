@@ -15,7 +15,15 @@ body {
 } */
 
 .game-board, .side-panel {
-  border: 1px solid red
+  /* border: 1px solid red; */
+}
+
+.gameboard {
+  display: grid;
+  grid-template-columns: 120px 120px 120px 120px 120px 120px;
+  grid-column-gap: 7px;
+  grid-row-gap: 15px;
+  background-color: black;
 }
 
 #main {
@@ -31,6 +39,10 @@ body {
   justify-content: space-evenly;
 }
 
+.category-heading {
+  height: 50px;
+}
+
 .clue {
   color: rgb(208, 162, 89);
   background-color: rgb(0, 16, 110);
@@ -44,14 +56,13 @@ body {
                 .14em .14em rgb(0, 0, 0),
                 .16em .16em rgb(0, 0, 0);
 
-  font-size: 20px;
+  font-size: 25px;
   font-family: 'Anton', sans-serif;
+  height: 3em;
+  text-align: center;
+  margin-top: 5px;
 }
 
-.gameboard {
-  display: grid;
-  grid-template-columns: 120px 120px 120px 120px 120px 120px;
-  column-gap: 7px;
-  row-gap: 7px;
-  
+.clue-contents {
+  padding-top: .7em;
 }
