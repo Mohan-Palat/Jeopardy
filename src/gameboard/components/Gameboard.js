@@ -51,6 +51,7 @@ class Gameboard extends Component {
 
     let catsToRender;
     if(this.state.categories > 0){
+         console.log('catergoies has data!')
          catsToRender = this.state.categories||[].map((category)=>{
             return <Category title={category.title}
                               clues={category.clues}
@@ -58,9 +59,11 @@ class Gameboard extends Component {
         });
     }
     else{
+        console.log('no cats!!!')
         catsToRender = <></>;
     }
     
+    console.log('current state (render): ',this.state.categories);
     console.log('cats to render:',catsToRender);
     return (
       <>
