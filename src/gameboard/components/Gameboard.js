@@ -22,6 +22,7 @@ class Gameboard extends Component {
    * @param {*} numbers Array of ID numbers
    */
   getCategoriesFromIDs = (numbers) =>{
+    console.log('get categories from ids: ', numbers)
     numbers.forEach((id)=>{
         this.getCategoryFromID(id)
         .then((response)=>{
@@ -42,8 +43,9 @@ class Gameboard extends Component {
     // Get 6 random numbers and put them in array
     const categoryIDs = [14124,12345];
 
-    this.getCategoriesFromIDs(categoryIDs);
-    //this.getCategoriesFromIDs(this.props.idNums);
+    // this.getCategoriesFromIDs(categoryIDs);
+    this.getCategoriesFromIDs(this.props.idNums);
+    console.log(this.props.idNums)
     
     console.log('current state: ',this.state.categories);
   }

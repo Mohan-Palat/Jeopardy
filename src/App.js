@@ -20,12 +20,16 @@ class App extends Component {
   }
 
   render() {
+    let gameBoard = <button onClick={this.getCategoryIds}>Set Game</button>
+    if(this.state.categoryIds.length === 6){
+      gameBoard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds}/>
+    }
     return (
       <>
        <h1 id="title">Jeopardy</h1>
        <div id="main">
           <div className="game-board">
-              <Gameboard setClue={this.setClue} idNums={this.state.categoryIds}/>
+              {gameBoard}
           </div>
           <div className="side-panel">
               <QuestionDisplay question={this.state.currentClue.question}/>
@@ -36,6 +40,7 @@ class App extends Component {
        <div className="score">
           <ScoreKeeper score={this.state.score}/>
        </div>
+
       </>
     );
   }
