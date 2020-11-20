@@ -11,8 +11,9 @@ class App extends Component {
     super(props);
     this.state = {
       score:0,
-      currentClue: category.clues[0],
+      currentClue: {},
       userInput: '',
+      
     }
   }
 
