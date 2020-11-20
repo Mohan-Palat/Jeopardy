@@ -30,7 +30,9 @@ class App extends Component {
     return (
       <>
        <h1 id="title">Jeopardy</h1>
-       <Route path='/' exact render={() => <h1>Landing Page test</h1> }/>
+       <Route path='/' exact render={() => <NewGame getCategoryIds={this.getCategoryIds}/> }/>
+       <Route path='/' exact render={() => <Link to='/custom'><button>Custom Game</button> </Link>}/>
+
        <div id="main">
           <div className="game-board">
               {gameBoard}
