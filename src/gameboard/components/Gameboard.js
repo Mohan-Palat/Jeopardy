@@ -68,10 +68,10 @@ class Gameboard extends Component {
     return (
       <>
       <h3>Gameboard</h3>
-      {/* <Category title = {category.title} 
+      <Category title = {category.title} 
                 clues = {category.clues} 
-                setClue={this.props.setClue}/> */}
-       {catsToRender}
+                setClue={this.props.setClue}/>
+       {/* {catsToRender} */}
       </>
     );
   }
