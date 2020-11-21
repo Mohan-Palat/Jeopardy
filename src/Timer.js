@@ -15,7 +15,7 @@ class Timer extends Component {
   render() {
     return (
       <>
-        <h1>Seconds {this.state.seconds}</h1>
+        <p>Seconds {this.state.seconds}</p>
       </>
     )
   }
@@ -23,7 +23,9 @@ class Timer extends Component {
     this.setState({
       seconds: this.state.seconds - 1
     })
+    // If timer expires
     if (this.state.seconds === 0) {
+      // Consider it as a wrong answer and call setScore with empty string
       this.props.setScore('')
     }
   }
