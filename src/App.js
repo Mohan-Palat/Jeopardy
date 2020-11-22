@@ -34,19 +34,15 @@ class App extends Component {
        <div className="score">
           <ScoreKeeper score={this.state.score}/>
        </div>
+       <div id="main">
       {/* ************************* */}
         <Modal showQuestion={this.state.showQuestion} handleClose={this.hideModal}>
         <QuestionDisplay question={this.state.currentClue.question}/>
         <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
         </Modal>
       {/* ************************* */}
-       <div id="main">
           <div className="game-board">
               {gameBoard}
-          </div>
-          <div className="side-panel">
-              <QuestionDisplay question={this.state.currentClue.question}/>
-              <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
           </div>
        </div>
        <br/>
