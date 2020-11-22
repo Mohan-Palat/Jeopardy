@@ -7,6 +7,7 @@ import NewGame from './NewGame'
 import category from './testing/category'
 import './App.css'
 import categoryIds from './data/categoryIds'
+import Modal from './Modal'
 
 class App extends Component {
   constructor(props){
@@ -17,7 +18,8 @@ class App extends Component {
       userInput: '',
       inputDisabled: true,
       categoryIds: [],
-      clueIsActive: false
+      clueIsActive: false,
+      showQuestion: false,
     }
   }
 
@@ -29,6 +31,15 @@ class App extends Component {
     return (
       <>
        <h1 id="title">Jeopardy</h1>
+       <div className="score">
+          <ScoreKeeper score={this.state.score}/>
+       </div>
+      {/* ************************* */}
+        <Modal showQuestion={this.state.showQuestion} handleClose={this.hideModal}>
+        <QuestionDisplay question={this.state.currentClue.question}/>
+        <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
+        </Modal>
+      {/* ************************* */}
        <div id="main">
           <div className="game-board">
               {gameBoard}
@@ -39,13 +50,19 @@ class App extends Component {
           </div>
        </div>
        <br/>
-       <div className="score">
-          <ScoreKeeper score={this.state.score}/>
-       </div>
+       
 
       </>
     );
   }
+
+  showModal = () => {
+    this.setState({ showQuestion: true });
+  };
+
+  hideModal = () => {
+    this.setState({ showQuestion: false });
+  };
 
   getCategoryIds = () => {
     // Initialize variables
@@ -92,6 +109,7 @@ class App extends Component {
       inputDisabled: true,
       currentClue: {},
       clueIsActive: false,
+      showQuestion: false,
     })
   }
 
@@ -105,6 +123,7 @@ class App extends Component {
           currentClue: clue,
           inputDisabled: false,
           clueIsActive: true,
+          showQuestion: true,
         });
       }
       
