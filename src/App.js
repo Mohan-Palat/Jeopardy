@@ -7,7 +7,7 @@ import NewGame from './NewGame'
 import category from './testing/category'
 import './App.css'
 import categoryIds from './data/categoryIds'
-import Modal from './Modal'
+import QuestionPopup from './QuestionPopup'
 
 class App extends Component {
   constructor(props){
@@ -31,32 +31,30 @@ class App extends Component {
     return (
       <>
        <h1 id="title">Jeopardy</h1>
+      {/* ************************* */}
+        <QuestionPopup showQuestion={this.state.showQuestion} handleClose={this.hidePopup}>
+          <QuestionDisplay question={this.state.currentClue.question}/>
+          <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
+        </QuestionPopup>
+      {/* ************************* */}
        <div className="score">
           <ScoreKeeper score={this.state.score}/>
        </div>
        <div id="main">
-      {/* ************************* */}
-        <Modal showQuestion={this.state.showQuestion} handleClose={this.hideModal}>
-        <QuestionDisplay question={this.state.currentClue.question}/>
-        <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
-        </Modal>
-      {/* ************************* */}
           <div className="game-board">
               {gameBoard}
           </div>
        </div>
        <br/>
-       
-
       </>
     );
   }
 
-  showModal = () => {
+  showPopup = () => {
     this.setState({ showQuestion: true });
   };
 
-  hideModal = () => {
+  hidePopup = () => {
     this.setState({ showQuestion: false });
   };
 
