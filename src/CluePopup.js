@@ -1,5 +1,5 @@
-const QuestionPopup = ({ handleClose, showQuestion, isDisabled, children }) => {
-    const showHideClassName = showQuestion ? "modal display-block" : "modal display-none";
+const CluePopup = ({ handleClose, showClue, isDisabled, children }) => {
+    const showHideClassName = showClue ? "modal display-block" : "modal display-none";
   
     return (
       <div className={showHideClassName}>
@@ -11,4 +11,4 @@ const QuestionPopup = ({ handleClose, showQuestion, isDisabled, children }) => {
     );
   };
 
-  export default QuestionPopup;
+  export default CluePopup;

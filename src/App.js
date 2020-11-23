@@ -7,7 +7,7 @@ import NewGame from './NewGame'
 import category from './testing/category'
 import './App.css'
 import categoryIds from './data/categoryIds'
-import QuestionPopup from './QuestionPopup'
+import CluePopup from './CluePopup'
 import AnswerDisplay from './AnswerDisplay'
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
       inputDisabled: true,
       categoryIds: [],
       clueIsActive: false,
-      showQuestion: false,
+      showClue: false,
       showAnswer: false,
     }
   }
@@ -33,11 +33,11 @@ class App extends Component {
     return (
       <>
        <h1 id="title">Jeopardy</h1>
-        <QuestionPopup showQuestion={this.state.showQuestion} handleClose={this.resetClue} isDisabled={this.state.inputDisabled}>
+        <CluePopup showClue={this.state.showClue} handleClose={this.resetClue} isDisabled={this.state.inputDisabled}>
           <QuestionDisplay question={this.state.currentClue.question}/>
           <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
           <AnswerDisplay answer={this.state.currentClue.answer} showAnswer={this.state.showAnswer}/>
-        </QuestionPopup>
+        </CluePopup>
        <div className="score">
           <ScoreKeeper score={this.state.score}/>
        </div>
@@ -56,9 +56,8 @@ class App extends Component {
     this.setState({
       currentClue: {},
       clueIsActive: false,
-      showQuestion: false,
+      showClue: false,
       showAnswer: false,
-      showQuestion: false,
     })
   }
 
@@ -120,7 +119,7 @@ class App extends Component {
           currentClue: clue,
           inputDisabled: false,
           clueIsActive: true,
-          showQuestion: true,
+          showClue: true,
         });
       }
       
