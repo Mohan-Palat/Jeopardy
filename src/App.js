@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import Gameboard from './gameboard/components/Gameboard'
-import ScoreKeeper from './ScoreKeeper'
-import Inputform from './Inputform'
-import QuestionDisplay from './QuestionDisplay'
-import NewGame from './NewGame'
-import category from './testing/category'
-import './App.css'
-import categoryIds from './data/categoryIds'
-import { Route, Link } from 'react-router-dom'
-import CluePopup from './CluePopup'
-import AnswerDisplay from './AnswerDisplay'
+import Gameboard from './gameboard/components/Gameboard';
+import ScoreKeeper from './ScoreKeeper';
+import Inputform from './Inputform';
+import QuestionDisplay from './QuestionDisplay';
+import NewGame from './NewGame';
+import './App.css';
+import categoryIds from './data/categoryIds';
+import { Route, Link } from 'react-router-dom';
+import CluePopup from './CluePopup';
+import AnswerDisplay from './AnswerDisplay';
+import Search from './Search';
 
 class App extends Component {
   constructor(props){
@@ -43,12 +43,23 @@ class App extends Component {
               <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
               <Route path='/' exact component={() => <Link to='/custom'><button>Custom Game</button> </Link>}/>
               <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
+              <Search addSearch ={this.addIDFromSearch}/>
           </div>
        </div>
        <br/>
        <br/>
       </>
     );
+  }
+
+  addIDFromSearch = (id) =>{
+    // Only do this for valid inputs
+    if(id!==-1){
+      this.setState(prevState=>({
+        categoryIds:[...prevState.categoryIds,id]
+      }));
+    }
+    console.log(this.state.categoryIds);
   }
 
   // Reset states after the question is ansewered
