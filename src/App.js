@@ -7,7 +7,9 @@ import NewGame from './NewGame'
 import category from './testing/category'
 import './App.css'
 import categoryIds from './data/categoryIds'
-import QuestionPopup from './QuestionPopup'
+import { Route, Link } from 'react-router-dom'
+import CluePopup from './CluePopup'
+import AnswerDisplay from './AnswerDisplay'
 
 class App extends Component {
   constructor(props){
@@ -19,46 +21,48 @@ class App extends Component {
       inputDisabled: true,
       categoryIds: [],
       clueIsActive: false,
-      showQuestion: false,
+      showClue: false,
+      showAnswer: false,
     }
   }
 
   render() {
-    let gameBoard = <NewGame getCategoryIds={this.getCategoryIds}/>
-    if(this.state.categoryIds.length === 6){
-      gameBoard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>
-    }
     return (
       <>
        <h1 id="title">Jeopardy</h1>
-      {/* ************************* */}
-        <QuestionPopup showQuestion={this.state.showQuestion} handleClose={this.hidePopup}>
+        <CluePopup showClue={this.state.showClue} handleClose={this.resetClue} isDisabled={this.state.inputDisabled}>
           <QuestionDisplay question={this.state.currentClue.question}/>
           <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
-        </QuestionPopup>
-      {/* ************************* */}
+          <AnswerDisplay answer={this.state.currentClue.answer} showAnswer={this.state.showAnswer}/>
+        </CluePopup>
        <div className="score">
-          <ScoreKeeper score={this.state.score}/>
+        <Route path='/(random|custom)/' component={() => <ScoreKeeper score={this.state.score}/>}/>
        </div>
        <div id="main">
           <div className="game-board">
-              {gameBoard}
+              <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
+              <Route path='/' exact component={() => <Link to='/custom'><button>Custom Game</button> </Link>}/>
+              <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
           </div>
        </div>
+       <br/>
        <br/>
       </>
     );
   }
 
-  showPopup = () => {
-    this.setState({ showQuestion: true });
-  };
-
-  hidePopup = () => {
-    this.setState({ showQuestion: false });
-  };
+  // Reset states after the question is ansewered
+  resetClue = () => {
+    this.setState({
+      currentClue: {},
+      clueIsActive: false,
+      showClue: false,
+      showAnswer: false,
+    })
+  }
 
   getCategoryIds = () => {
+    console.log('getCategoryIds called')
     // Initialize variables
     let randomIndex = 0;
     let ids = categoryIds                     // Ids from whole dataset
@@ -81,7 +85,7 @@ class App extends Component {
       categoryIds: newArray
     })
 
-    console.log(this.state.categoryIds)
+    console.log('category ids after hitting new Game:' ,this.state.categoryIds)
   }
 
   setScore = (userInput) => {
@@ -94,6 +98,8 @@ class App extends Component {
       newScore = this.state.score + this.state.currentClue.value
     } else {
       newScore = this.state.score - this.state.currentClue.value
+      // Show answer if response was incorrect (or time expired)
+      this.setState({showAnswer: true})
     }
     
     console.log('new score: ', newScore) 
@@ -101,9 +107,6 @@ class App extends Component {
     this.setState({
       score: newScore,
       inputDisabled: true,
-      currentClue: {},
-      clueIsActive: false,
-      showQuestion: false,
     })
   }
 
@@ -117,7 +120,7 @@ class App extends Component {
           currentClue: clue,
           inputDisabled: false,
           clueIsActive: true,
-          showQuestion: true,
+          showClue: true,
         });
       }
       
