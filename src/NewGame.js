@@ -1,21 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom'
 
-class NewGame extends Component {
-  render() {
+const NewGame = (props) =>  {
+    const history = useHistory();
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      // console.log ('User clicked new game')
+      props.getCategoryIds()
+      
+      // route to correct path
+      history.push('/random')
+    }
     return (
       <>
-        <form onSubmit={this.handleSubmit} >
+        <form onSubmit={handleSubmit} >
           <button type="submit">New Game</button>
         </form>
       </>
     );
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    // console.log ('User clicked new game')
-    this.props.getCategoryIds()
-  }
 }
 
 export default NewGame;

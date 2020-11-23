@@ -7,7 +7,7 @@ import NewGame from './NewGame'
 import category from './testing/category'
 import './App.css'
 import categoryIds from './data/categoryIds'
-import { Route, Link, useHistory } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 
 class App extends Component {
   constructor(props){
@@ -23,19 +23,12 @@ class App extends Component {
   }
 
   render() {
-    // let gameBoard = <NewGame getCategoryIds={this.getCategoryIds}/>
-    // if(this.state.categoryIds.length === 6){
-    //   gameBoard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>
-    // }
     return (
       <>
        <h1 id="title">Jeopardy</h1>
        <div id="main">
           <div className="game-board">
-              {/* {gameBoard} */}
-              <Route path='/' exact component={() => <Link to='/random'><NewGame getCategoryIds={this.getCategoryIds}/></Link>}/>
-
-              {/* <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/> */}
+              <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
               <Route path='/' exact component={() => <Link to='/custom'><button>Custom Game</button> </Link>}/>
               <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
           </div>
@@ -54,11 +47,6 @@ class App extends Component {
       </>
     );
   }
-
-  // useHistoryForPath = (path) => {
-  //   let history = useHistory()
-  //   history.push(path)
-  // }
 
   getCategoryIds = () => {
     console.log('getCategoryIds called')
@@ -85,9 +73,6 @@ class App extends Component {
     })
 
     console.log('category ids after hitting new Game:' ,this.state.categoryIds)
-
-    // route to /random path using React Hooks
-    // this.useHistoryForPath('/random')
   }
 
   setScore = (userInput) => {
