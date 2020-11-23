@@ -27,6 +27,10 @@ class App extends Component {
     }
   }
 
+  //   shouldComponentUpdate() {
+  //     return true; // Will cause component to never re-render.
+  // }
+
   render() {
     return (
       <>
