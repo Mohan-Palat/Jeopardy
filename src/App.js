@@ -4,7 +4,6 @@ import ScoreKeeper from './ScoreKeeper';
 import Inputform from './Inputform';
 import QuestionDisplay from './QuestionDisplay';
 import NewGame from './NewGame';
-import category from './testing/category';
 import './App.css';
 import categoryIds from './data/categoryIds';
 import { Route, Link } from 'react-router-dom';
