@@ -19,8 +19,8 @@ class Clues extends Component {
     })
     return (
       <div className='jeopardy-column'>
-      <h3 className="clue-category">{this.props.title}</h3>
-      {clues}
+        <h3 className="clue-category">{this.props.title}</h3>
+        {clues}
       </div>
     );
   }
