@@ -30,9 +30,9 @@ class Clue extends Component {
 
   render() {
     return (
-      <div className='clue' onClick={this.handleClick}>
-      <div className='clue-contents'> ${this.state.displayValue}</div>
-      </div>
+        <div className='clue clue-contents' onClick={this.handleClick}>
+          ${this.state.displayValue}
+        </div>
     );
   }
 }
