@@ -7,7 +7,7 @@ import NewGame from './NewGame'
 import category from './testing/category'
 import './App.css'
 import categoryIds from './data/categoryIds'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, useHistory } from 'react-router-dom'
 
 class App extends Component {
   constructor(props){
@@ -23,35 +23,45 @@ class App extends Component {
   }
 
   render() {
-    let gameBoard = <NewGame getCategoryIds={this.getCategoryIds}/>
-    if(this.state.categoryIds.length === 6){
-      gameBoard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>
-    }
+    // let gameBoard = <NewGame getCategoryIds={this.getCategoryIds}/>
+    // if(this.state.categoryIds.length === 6){
+    //   gameBoard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>
+    // }
     return (
       <>
        <h1 id="title">Jeopardy</h1>
-       <Route path='/' exact render={() => <NewGame getCategoryIds={this.getCategoryIds}/> }/>
-       <Route path='/' exact render={() => <Link to='/custom'><button>Custom Game</button> </Link>}/>
-
        <div id="main">
           <div className="game-board">
-              {gameBoard}
+              {/* {gameBoard} */}
+              <Route path='/' exact component={() => <Link to='/random'><NewGame getCategoryIds={this.getCategoryIds}/></Link>}/>
+
+              {/* <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/> */}
+              <Route path='/' exact component={() => <Link to='/custom'><button>Custom Game</button> </Link>}/>
+              <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
           </div>
           <div className="side-panel">
-              <QuestionDisplay question={this.state.currentClue.question}/>
-              <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
+              {/* Used Regex to assign one component to multiple routes */}
+              <Route path='/(random|custom)/' component={() => <QuestionDisplay question={this.state.currentClue.question}/>}/>
+              <Route path='/(random|custom)/' component={() => <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>}/>
           </div>
        </div>
        <br/>
        <div className="score">
-          <ScoreKeeper score={this.state.score}/>
+         {/* Used Regex to assign one component to multiple routes */}
+          <Route path='/(random|custom)/' component={() => <ScoreKeeper score={this.state.score}/>}/>
        </div>
 
       </>
     );
   }
 
+  // useHistoryForPath = (path) => {
+  //   let history = useHistory()
+  //   history.push(path)
+  // }
+
   getCategoryIds = () => {
+    console.log('getCategoryIds called')
     // Initialize variables
     let randomIndex = 0;
     let ids = categoryIds                     // Ids from whole dataset
@@ -74,7 +84,10 @@ class App extends Component {
       categoryIds: newArray
     })
 
-    console.log(this.state.categoryIds)
+    console.log('category ids after hitting new Game:' ,this.state.categoryIds)
+
+    // route to /random path using React Hooks
+    // this.useHistoryForPath('/random')
   }
 
   setScore = (userInput) => {
