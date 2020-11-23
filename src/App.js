@@ -9,6 +9,8 @@ import './App.css'
 import categoryIds from './data/categoryIds'
 import QuestionPopup from './QuestionPopup'
 
+import AnswerDisplay from './AnswerDisplay'
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -20,6 +22,7 @@ class App extends Component {
       categoryIds: [],
       clueIsActive: false,
       showQuestion: false,
+      showAnswer: false,
     }
   }
 
@@ -31,12 +34,11 @@ class App extends Component {
     return (
       <>
        <h1 id="title">Jeopardy</h1>
-      {/* ************************* */}
-        <QuestionPopup showQuestion={this.state.showQuestion} handleClose={this.hidePopup}>
+        <QuestionPopup showQuestion={this.state.showQuestion} handleClose={this.resetClue}>
           <QuestionDisplay question={this.state.currentClue.question}/>
           <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
+          <AnswerDisplay answer={this.state.currentClue.answer} showAnswer={this.state.showAnswer}/>
         </QuestionPopup>
-      {/* ************************* */}
        <div className="score">
           <ScoreKeeper score={this.state.score}/>
        </div>
@@ -50,11 +52,20 @@ class App extends Component {
     );
   }
 
-  showPopup = () => {
-    this.setState({ showQuestion: true });
-  };
+  // Reset states
+  resetClue = () => {
+    this.setState({
+      currentClue: {},
+      clueIsActive: false,
+      showQuestion: false,
+      showAnswer: false,
+      showQuestion: false,
+    })
+  }
 
-  hidePopup = () => {
+
+  // Maybe move under future reset func
+  closePopup = () => {
     this.setState({ showQuestion: false });
   };
 
@@ -94,6 +105,7 @@ class App extends Component {
       newScore = this.state.score + this.state.currentClue.value
     } else {
       newScore = this.state.score - this.state.currentClue.value
+      this.setState({showAnswer: true})
     }
     
     console.log('new score: ', newScore) 
@@ -101,9 +113,10 @@ class App extends Component {
     this.setState({
       score: newScore,
       inputDisabled: true,
-      currentClue: {},
-      clueIsActive: false,
-      showQuestion: false,
+      // currentClue: {},
+      // clueIsActive: false,
+      // showQuestion: false,
+      // showAnswer: false,
     })
   }
 

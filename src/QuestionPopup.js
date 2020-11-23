@@ -5,6 +5,7 @@ const QuestionPopup = ({ handleClose, showQuestion, children }) => {
       <div className={showHideClassName}>
         <section className="modal-main">
           {children}
+          <button onClick={handleClose}>close</button>
         </section>
       </div>
     );
