@@ -1,36 +1,60 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
 import categories from './data/categories'
+
+
 class Search extends Component {
+    constructor(props){
+        super(props)
+        
+        this.state = {
+            curValue: 0,
+            options: categories.map((cat)=>{
+                    return {value: cat.id,
+                            label: cat.category};
+                    })
+        }
+    }
+    // findIDFromSearchTerm = (str)=>{
+    //     let returnVal = -1;
+    //     categories.forEach((cat)=>{
+    //         if(cat.category.toLowerCase()===str.toLowerCase()){
+    //             returnVal = cat.id
+    //         }
+    //     });
 
-    findIDFromSearchTerm = (str)=>{
-        let returnVal = -1;
-        categories.forEach((cat)=>{
-            if(cat.category.toLowerCase()===str.toLowerCase()){
-                returnVal = cat.id
-            }
-        });
+    //     return returnVal;
+    // }
 
-        return returnVal;
+    // change state to currently selected value
+    handleChange = (e)=>{
+        this.setState({
+            curValue: e.value,
+        })
     }
 
-    handleClick = (e)=>{
+    // pass ID up to App
+    handleSubmit = (e)=>{
     e.preventDefault();
-    const searchTerm = e.target[0].value;
-    const id = this.findIDFromSearchTerm(searchTerm);
 
-    console.log(id);
+    // const searchTerm = e.target[0].value;
+    // const id = this.findIDFromSearchTerm(searchTerm);
+
     // reset value
-    e.target[0].value='';
+    // e.target[0].value='';
+    
 
-    this.props.addSearch(id);
+    this.props.addSearch(this.state.curValue);
   }
   render() {
+   
     return (
       <>
-        <form onSubmit={this.handleClick}>
-            <input type ="text" placeholder="Enter desired category"/>
-            <input type = "submit" value ="Submit"/>
+        <form onSubmit = {this.handleSubmit}>
+            <Select options={this.state.options} onChange={this.handleChange}/>
+            <input type="submit" value="submit"/>
         </form>
+        
       </>
     );
   }
