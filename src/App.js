@@ -8,6 +8,8 @@ import category from './testing/category'
 import './App.css'
 import categoryIds from './data/categoryIds'
 import { Route, Link } from 'react-router-dom'
+import CluePopup from './CluePopup'
+import AnswerDisplay from './AnswerDisplay'
 
 class App extends Component {
   constructor(props){
@@ -18,7 +20,9 @@ class App extends Component {
       userInput: '',
       inputDisabled: true,
       categoryIds: [],
-      clueIsActive: false
+      clueIsActive: false,
+      showClue: false,
+      showAnswer: false,
     }
   }
 
@@ -26,26 +30,35 @@ class App extends Component {
     return (
       <>
        <h1 id="title">Jeopardy</h1>
+        <CluePopup showClue={this.state.showClue} handleClose={this.resetClue} isDisabled={this.state.inputDisabled}>
+          <QuestionDisplay question={this.state.currentClue.question}/>
+          <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
+          <AnswerDisplay answer={this.state.currentClue.answer} showAnswer={this.state.showAnswer}/>
+        </CluePopup>
+       <div className="score">
+        <Route path='/(random|custom)/' component={() => <ScoreKeeper score={this.state.score}/>}/>
+       </div>
        <div id="main">
           <div className="game-board">
               <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
               <Route path='/' exact component={() => <Link to='/custom'><button>Custom Game</button> </Link>}/>
               <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
           </div>
-          <div className="side-panel">
-              {/* Used Regex to assign one component to multiple routes */}
-              <Route path='/(random|custom)/' component={() => <QuestionDisplay question={this.state.currentClue.question}/>}/>
-              <Route path='/(random|custom)/' component={() => <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>}/>
-          </div>
        </div>
        <br/>
-       <div className="score">
-         {/* Used Regex to assign one component to multiple routes */}
-          <Route path='/(random|custom)/' component={() => <ScoreKeeper score={this.state.score}/>}/>
-       </div>
-
+       <br/>
       </>
     );
+  }
+
+  // Reset states after the question is ansewered
+  resetClue = () => {
+    this.setState({
+      currentClue: {},
+      clueIsActive: false,
+      showClue: false,
+      showAnswer: false,
+    })
   }
 
   getCategoryIds = () => {
@@ -85,6 +98,8 @@ class App extends Component {
       newScore = this.state.score + this.state.currentClue.value
     } else {
       newScore = this.state.score - this.state.currentClue.value
+      // Show answer if response was incorrect (or time expired)
+      this.setState({showAnswer: true})
     }
     
     console.log('new score: ', newScore) 
@@ -92,8 +107,6 @@ class App extends Component {
     this.setState({
       score: newScore,
       inputDisabled: true,
-      currentClue: {},
-      clueIsActive: false,
     })
   }
 
@@ -107,6 +120,7 @@ class App extends Component {
           currentClue: clue,
           inputDisabled: false,
           clueIsActive: true,
+          showClue: true,
         });
       }
       

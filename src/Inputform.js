@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Timer from './Timer';
 
 class Inputform extends Component {
   constructor(props){
@@ -19,6 +20,8 @@ class Inputform extends Component {
                     placeholder="Anwser here"
                     disabled={this.props.isDisabled} />
           <button type="submit" disabled={this.props.isDisabled}>Submit Answer</button>
+          {/* Start timer only when user clicks on a clue */}
+          {!this.props.isDisabled ? <Timer setScore={this.props.setScore}/> : <div><p>Seconds: 10</p></div>}
         </form>
       </>
     );
