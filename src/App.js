@@ -52,7 +52,8 @@ class App extends Component {
   }
 
   // Reset states after the question is ansewered
-  resetClue = () => {
+  resetClue = (e) => {
+    e.preventDefault()
     this.setState({
       currentClue: {},
       clueIsActive: false,
