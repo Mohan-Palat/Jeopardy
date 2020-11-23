@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Category from './Category';
+// import Category from './Category';
+import Clues from './Clues';
 import axios from 'axios';
 
 class Gameboard extends Component {
@@ -41,7 +42,7 @@ class Gameboard extends Component {
 
   componentDidMount() {
     // Get 6 random numbers and put them in array
-    const categoryIDs = [14124,12345];
+    // const categoryIDs = [14124,12345];
 
     // this.getCategoriesFromIDs(categoryIDs);
     this.getCategoriesFromIDs(this.props.idNums);
@@ -59,7 +60,7 @@ class Gameboard extends Component {
     if(this.state.categories.length > 0){
          console.log('catergoies has data!')
          catsToRender = this.state.categories.map((category)=>{
-            return <Category title={category.title}
+            return <Clues title={category.title}
                               clues={category.clues}
                               setClue={this.props.setClue}
                               key = {category.id}
