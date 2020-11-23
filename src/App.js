@@ -23,6 +23,7 @@ class App extends Component {
       clueIsActive: false,
       showClue: false,
       showAnswer: false,
+      answeredCorrectly: false,
     }
   }
 
@@ -33,7 +34,7 @@ class App extends Component {
         <CluePopup showClue={this.state.showClue} handleClose={this.resetClue} isDisabled={this.state.inputDisabled}>
           <QuestionDisplay question={this.state.currentClue.question}/>
           <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
-          <AnswerDisplay answer={this.state.currentClue.answer} showAnswer={this.state.showAnswer}/>
+          <AnswerDisplay answer={this.state.currentClue.answer} showAnswer={this.state.showAnswer} answeredCorrectly={this.state.answeredCorrectly}/>
         </CluePopup>
        <div className="score">
         <Route path='/(random|custom)/' component={() => <ScoreKeeper score={this.state.score}/>}/>
@@ -41,9 +42,11 @@ class App extends Component {
        <div id="main">
           <div className="game-board">
               <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
-              <Route path='/' exact component={() => <Link to='/custom'><button>Custom Game</button> </Link>}/>
+              <Route path='/' exact component={() => <Link to='/custom-settings'><button>Custom Game</button> </Link>}/>
               <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
-              <Search addSearch ={this.addIDFromSearch}/>
+              <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch}/>}/>
+              <Route path='/custom-settings' exact component={() => <Link to='/custom'><button>Start Game</button> </Link>}/>
+              <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
           </div>
        </div>
        <br/>
@@ -63,12 +66,14 @@ class App extends Component {
   }
 
   // Reset states after the question is ansewered
-  resetClue = () => {
+  resetClue = (e) => {
+    e.preventDefault()
     this.setState({
       currentClue: {},
       clueIsActive: false,
       showClue: false,
       showAnswer: false,
+      answeredCorrectly: false,
     })
   }
 
@@ -107,10 +112,12 @@ class App extends Component {
     let newScore = 0;
     if(userInput.toLowerCase() === this.state.currentClue.answer.toLocaleLowerCase()){
       newScore = this.state.score + this.state.currentClue.value
+      // Set flag when user reponded accurately
+      this.setState({answeredCorrectly: true})
     } else {
       newScore = this.state.score - this.state.currentClue.value
-      // Show answer if response was incorrect (or time expired)
-      this.setState({showAnswer: true})
+      // Set flag when response was wrong (or time expired)
+      this.setState({answeredCorrectly: false})
     }
     
     console.log('new score: ', newScore) 
@@ -118,6 +125,7 @@ class App extends Component {
     this.setState({
       score: newScore,
       inputDisabled: true,
+      showAnswer: true,
     })
   }
 

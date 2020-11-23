@@ -9,7 +9,7 @@ const NewGame = (props) =>  {
       props.getCategoryIds()
       
       // route to correct path
-      history.push('/random')
+      history.replace('/random')
     }
     return (
       <>
