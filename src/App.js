@@ -43,13 +43,23 @@ class App extends Component {
               <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
               <Route path='/' exact component={() => <Link to='/custom'><button>Custom Game</button> </Link>}/>
               <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
-              <Search/>
+              <Search addSearch ={this.addIDFromSearch}/>
           </div>
        </div>
        <br/>
        <br/>
       </>
     );
+  }
+
+  addIDFromSearch = (id) =>{
+    // Only do this for valid inputs
+    if(id!==-1){
+      this.setState(prevState=>({
+        categoryIds:[...prevState.categoryIds,id]
+      }));
+    }
+    console.log(this.state.categoryIds);
   }
 
   // Reset states after the question is ansewered

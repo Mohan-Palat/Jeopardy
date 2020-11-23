@@ -16,9 +16,13 @@ class Search extends Component {
     handleClick = (e)=>{
     e.preventDefault();
     const searchTerm = e.target[0].value;
-    console.log(this.findIDFromSearchTerm(searchTerm));
+    const id = this.findIDFromSearchTerm(searchTerm);
 
+    console.log(id);
+    // reset value
     e.target[0].value='';
+
+    this.props.addSearch(id);
   }
   render() {
     return (
