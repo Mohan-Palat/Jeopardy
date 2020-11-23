@@ -8,7 +8,6 @@ import category from './testing/category'
 import './App.css'
 import categoryIds from './data/categoryIds'
 import QuestionPopup from './QuestionPopup'
-
 import AnswerDisplay from './AnswerDisplay'
 
 class App extends Component {
@@ -52,7 +51,7 @@ class App extends Component {
     );
   }
 
-  // Reset states
+  // Reset states after the question is ansewered
   resetClue = () => {
     this.setState({
       currentClue: {},
@@ -99,6 +98,7 @@ class App extends Component {
       newScore = this.state.score + this.state.currentClue.value
     } else {
       newScore = this.state.score - this.state.currentClue.value
+      // Show answer if response was incorrect (or time expired)
       this.setState({showAnswer: true})
     }
     
@@ -107,10 +107,6 @@ class App extends Component {
     this.setState({
       score: newScore,
       inputDisabled: true,
-      // currentClue: {},
-      // clueIsActive: false,
-      // showQuestion: false,
-      // showAnswer: false,
     })
   }
 
