@@ -34,7 +34,7 @@ class App extends Component {
     return (
       <>
        <h1 id="title">Jeopardy</h1>
-        <QuestionPopup showQuestion={this.state.showQuestion} handleClose={this.resetClue}>
+        <QuestionPopup showQuestion={this.state.showQuestion} handleClose={this.resetClue} isDisabled={this.state.inputDisabled}>
           <QuestionDisplay question={this.state.currentClue.question}/>
           <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
           <AnswerDisplay answer={this.state.currentClue.answer} showAnswer={this.state.showAnswer}/>
@@ -62,12 +62,6 @@ class App extends Component {
       showQuestion: false,
     })
   }
-
-
-  // Maybe move under future reset func
-  closePopup = () => {
-    this.setState({ showQuestion: false });
-  };
 
   getCategoryIds = () => {
     // Initialize variables
