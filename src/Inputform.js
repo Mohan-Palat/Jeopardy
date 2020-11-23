@@ -17,7 +17,7 @@ class Inputform extends Component {
           <input    type="text"
                     value={this.state.answer}
                     onChange={this.onTextBoxChange}
-                    placeholder="Anwser here"
+                    placeholder="What is..."
                     disabled={this.props.isDisabled} />
           <button type="submit" disabled={this.props.isDisabled}>Submit Answer</button>
           {/* Start timer only when user clicks on a clue */}
