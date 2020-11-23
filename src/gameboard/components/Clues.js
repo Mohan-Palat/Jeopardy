@@ -13,7 +13,7 @@ class Clues extends Component {
   render() {
     const clues = this.props.clues.map((clue,index)=>{
         return <Clue clue={clue}
-                     setClue={this.props.setClue}
+                     setClue={(e) => this.props.setClue(e, clue)}
                      key={index}
                      clueIsActive = {this.props.clueIsActive}/>
     })
