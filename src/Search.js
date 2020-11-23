@@ -47,14 +47,23 @@ class Search extends Component {
     this.props.addSearch(this.state.curValue);
   }
   render() {
-   
+   let categoryIds = this.props.selectedCategories
+
+   // loop through categories and match with categories data file to display topics on screen
+   let categories = categoryIds.filter((id) => {
+     categories.forEach(category => {
+       
+     })
+   })
+
     return (
       <>
         <form onSubmit = {this.handleSubmit}>
             <Select options={this.state.options} onChange={this.handleChange}/>
             <input type="submit" value="submit"/>
         </form>
-        
+        <h3>Selected Categories</h3>
+
       </>
     );
   }

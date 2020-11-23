@@ -10,6 +10,8 @@ import { Route, Link } from 'react-router-dom';
 import CluePopup from './CluePopup';
 import AnswerDisplay from './AnswerDisplay';
 import Search from './Search';
+// import { withRouter } from "react-router";
+import axios from 'axios'
 
 class App extends Component {
   constructor(props){
@@ -24,6 +26,7 @@ class App extends Component {
       showClue: false,
       showAnswer: false,
       answeredCorrectly: false,
+      categories: [],
     }
   }
 
@@ -47,8 +50,8 @@ class App extends Component {
           <div className="game-board">
               <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
               <Route path='/' exact component={() => <Link to='/custom-settings'><button>Custom Game</button> </Link>}/>
-              <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
-              <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch}/>}/>
+              <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive} categories={this.state.categories}/>}/>
+              <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch} selectedCategories={this.state.categoryIds}/>}/>
               <Route path='/custom-settings' exact component={() => <Link to='/custom'><button>Start Game</button> </Link>}/>
               <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
           </div>
@@ -57,6 +60,34 @@ class App extends Component {
        <br/>
       </>
     );
+  }
+
+  // Calls jservice API to get a single category by ID
+  getCategoryFromID = (id) =>{
+    const jserviceURL = 'http://jservice.io/api/category?id='+id;
+        return axios.get(jserviceURL)
+  }
+
+  /**
+   * Given an array of numbers, pull data from jservice API by id for each number
+   * @param {*} numbers Array of ID numbers
+   */
+  getCategoriesFromIDs = (numbers) =>{
+    console.log('get categories from ids: ', numbers)
+    numbers.forEach((id)=>{
+        this.getCategoryFromID(id)
+        .then((response)=>{
+
+            //Push API output into categories array
+            this.setState(prevState=>({
+                categories:[...prevState.categories,response.data]
+            }));
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+    });
+
   }
 
   addIDFromSearch = (id) =>{
@@ -69,7 +100,7 @@ class App extends Component {
     console.log(this.state.categoryIds);
   }
 
-  // Reset states after the question is ansewered
+  // Reset states after the question is answered
   resetClue = (e) => {
     e.preventDefault()
     this.setState({
@@ -105,7 +136,10 @@ class App extends Component {
       categoryIds: newArray
     })
 
+    this.getCategoriesFromIDs(this.state.categoryIds);
+
     console.log('category ids after hitting new Game:' ,this.state.categoryIds)
+    // this.props.history.push('/random')
   }
 
   setScore = (userInput) => {
@@ -134,7 +168,8 @@ class App extends Component {
   }
 
   // Sets clue passed from Clue and enables Input
-  setClue = (clue) => {
+  setClue = (e, clue) => {
+    e.preventDefault()
     console.log('setClue called',clue);
 
     console.log(this.state.clueIsActive);

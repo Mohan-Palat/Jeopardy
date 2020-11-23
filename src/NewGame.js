@@ -1,7 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 
+
+
 const NewGame = (props) =>  {
+    console.log(props)
     const history = useHistory();
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -9,7 +12,7 @@ const NewGame = (props) =>  {
       props.getCategoryIds()
       
       // route to correct path
-      history.replace('/random')
+      history.push('/random')
     }
     return (
       <>

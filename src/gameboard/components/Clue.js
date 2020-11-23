@@ -12,11 +12,21 @@ class Clue extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(this.props.hasBeenClicked);
+    if (!this.state.hasBeenClicked) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   // On click, change the display from numeric value to the question
   // Send clue prop to App
-  handleClick = (e)=>{
+  handleClick = (e) =>{
       e.preventDefault();
-      //e.stopPropogation();
+      //e.stopPropagation();
+      console.log('clicked!')
       console.log('App clue is Active:', this.props.clueIsActive)
       
       if(this.state.hasBeenClicked===false&& this.props.clueIsActive === false){
@@ -25,17 +35,15 @@ class Clue extends Component {
             hasBeenClicked:true,
             displayValue: this.props.clue.question
         });
-        
-        this.props.setClue(this.props.clue);
-      }
-      
+        this.props.setClue(e, this.props.clue);
+      }      
   }
 
   render() {
     return (
-        <div className='clue clue-contents' onClick={this.handleClick}>
-          ${this.state.displayValue}
-        </div>
+      <div className={this.state.hasBeenClicked ? 'clue-clicked':'clue'} onClick={(e) => this.handleClick(e)}>
+      <div className='clue-contents'> ${this.state.displayValue}</div>
+      </div>
     );
   }
 }
