@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <>
        <h1 id="title">Jeopardy</h1>
-        <CluePopup showClue={this.state.showClue} handleClose={this.resetClue} isDisabled={this.state.inputDisabled}>
+       <CluePopup showClue={this.state.showClue} handleClose={this.resetClue} isDisabled={this.state.inputDisabled}>
           <QuestionDisplay question={this.state.currentClue.question}/>
           <Inputform setScore={this.setScore} isDisabled={this.state.inputDisabled}/>
           <AnswerDisplay answer={this.state.currentClue.answer} showAnswer={this.state.showAnswer} answeredCorrectly={this.state.answeredCorrectly}/>
