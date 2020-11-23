@@ -21,7 +21,7 @@ class Inputform extends Component {
                     disabled={this.props.isDisabled} />
           <button type="submit" disabled={this.props.isDisabled}>Submit Answer</button>
           {/* Start timer only when user clicks on a clue */}
-          {!this.props.isDisabled ? <Timer setScore={this.props.setScore}/> : <div><p>Seconds: 10</p></div>}
+          {!this.props.isDisabled ? <Timer setScore={this.props.setScore}/> : <div><p></p></div>}
         </form>
       </>
     );
