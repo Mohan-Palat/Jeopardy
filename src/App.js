@@ -10,6 +10,7 @@ import { Route, Link } from 'react-router-dom';
 import CluePopup from './CluePopup';
 import AnswerDisplay from './AnswerDisplay';
 import Search from './Search';
+import { withRouter } from "react-router";
 
 class App extends Component {
   constructor(props){
@@ -44,7 +45,7 @@ class App extends Component {
               <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
               <Route path='/' exact component={() => <Link to='/custom-settings'><button>Custom Game</button> </Link>}/>
               <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
-              <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch}/>}/>
+              <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch} selectedCategories={this.state.categoryIds}/>}/>
               <Route path='/custom-settings' exact component={() => <Link to='/custom'><button>Start Game</button> </Link>}/>
               <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
           </div>
@@ -102,6 +103,7 @@ class App extends Component {
     })
 
     console.log('category ids after hitting new Game:' ,this.state.categoryIds)
+    this.props.history.push('/random')
   }
 
   setScore = (userInput) => {
@@ -146,4 +148,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

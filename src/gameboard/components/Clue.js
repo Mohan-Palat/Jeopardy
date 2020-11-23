@@ -15,7 +15,7 @@ class Clue extends Component {
   // On click, change the display from numeric value to the question
   // Send clue prop to App
   handleClick = (e)=>{
-      console.log('clicked!')
+      console.log('clicked!', e.target)
       console.log('App clue is Active:', this.props.clueIsActive)
       if(this.state.hasBeenClicked===false&& this.props.clueIsActive === false){
         this.setState({
@@ -23,13 +23,12 @@ class Clue extends Component {
             displayValue: this.props.clue.question
         });
         this.props.setClue(this.props.clue);
-      }
-      
+      }      
   }
 
   render() {
     return (
-      <div className='clue' onClick={this.handleClick}>
+      <div className={this.state.hasBeenClicked ? 'clue-clicked':'clue'} onClick={this.handleClick}>
       <div className='clue-contents'> ${this.state.displayValue}</div>
       </div>
     );
