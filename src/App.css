@@ -72,7 +72,7 @@ body {
 
 .clue-clicked {
   color: transparent;
-  pointer-events: none
+  /* pointer-events: none */
 }
 
 

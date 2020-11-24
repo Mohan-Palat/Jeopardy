@@ -41,8 +41,8 @@ class Clue extends Component {
     // let className = this.state.hasBeenClicked ? 'clue-clicked':'clue';
     // console.log('IN RENDER FUNCTION >>> has been Clicked value: ', this.state.hasBeenClicked)
     return (
-      <div className={this.props.clue.hasBeenClicked ? 'clue-clicked':'clue'} onClick={(e) => this.handleClick(e)}>
-      <div className='clue-contents'> ${this.state.displayValue}</div>
+      <div className='clue' onClick={(e) => this.handleClick(e)}>
+      <div className={this.props.clue.hasBeenClicked ? 'clue-clicked clue-contents':'clue-contents'}> ${this.state.displayValue}</div>
       </div>
     );
   }

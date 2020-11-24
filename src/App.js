@@ -32,14 +32,11 @@ class App extends Component {
 
   render() {
 
-    let gameboard = <NewGame getCategoryIds={this.getCategoryIds}/>
-    if(this.state.categories.length === 6){
-      gameboard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive} categories={this.state.categories}/>
-    }
-    // Loading sign to implement later
-    // else if(this.state.categories > 0) {
-    //   gameboard = <h1>This is Jeopardy!...</h1>
+    // let gameboard = <NewGame getCategoryIds={this.getCategoryIds}/>
+    // if(this.state.categories.length === 6){
+    //   gameboard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive} categories={this.state.categories}/>
     // }
+
     return (
       <>
        <h1 id="title">Jeopardy</h1>
@@ -53,21 +50,12 @@ class App extends Component {
        </div>
        <div id="main">
           <div className="game-board">
-              {/* <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
+              <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
               <Route path='/' exact component={() => <Link to='/custom-settings'><button>Custom Game</button> </Link>}/>
               <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive} categories={this.state.categories}/>}/>
               <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch} selectedCategories={this.state.categoryIds}/>}/>
               <Route path='/custom-settings' exact component={() => <Link to='/custom'><button>Start Game</button> </Link>}/>
-              <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/> */}
-
-              {gameboard}
-
-              {/* <NewGame getCategoryIds={this.getCategoryIds}/> */}
-              {/* <Route path='/' exact component={() => <Link to='/custom-settings'><button>Custom Game</button> </Link>}/> */}
-              {/* <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive} categories={this.state.categories}/> */}
-              {/* <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch} selectedCategories={this.state.categoryIds}/>}/> */}
-              {/* <Route path='/custom-settings' exact component={() => <Link to='/custom'><button>Start Game</button> </Link>}/> */}
-              {/* <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/> */}
+              <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
           </div>
        </div>
        <br/>
