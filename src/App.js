@@ -62,7 +62,7 @@ class App extends Component {
 
   // Calls jservice API to get a single category by ID
   getCategoryFromID = (id) =>{
-    const jserviceURL = 'http://jservice.io/api/category?id='+id;
+    const jserviceURL = 'https://jservice.io/api/category?id='+id;
         return axios.get(jserviceURL)
   }
 
