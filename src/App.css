@@ -87,6 +87,11 @@ body {
   font-size: 10px;
 }
 
+.clue-clicked {
+  color: transparent;
+  /* pointer-events: none */
+}
+
 /* --------------------------- */
 
 
