@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import Category from './Category';
 import Clues from './Clues';
-import axios from 'axios';
 
 class Gameboard extends Component {
   // constructor(props){
@@ -22,7 +21,7 @@ class Gameboard extends Component {
          catsToRender = this.props.categories.map((category)=>{
             return <Clues title={category.title}
                               clues={category.clues}
-                              setClue={(e, clue) => this.props.setClue(e, clue)}
+                              setClue={this.props.setClue}
                               key = {category.id}
                               clueIsActive = {this.props.clueIsActive}/>
         });
