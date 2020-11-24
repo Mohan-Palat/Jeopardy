@@ -170,8 +170,7 @@ class App extends Component {
   // Sets clue passed from Clue and enables Input
   setClue = (e, clue) => {
     e.preventDefault()
-    console.log('setClue called',clue);
-
+    console.log('[App][setClue] params: ',clue);
     console.log(this.state.clueIsActive);
       if(!this.state.clueIsActive){
         this.setState({
