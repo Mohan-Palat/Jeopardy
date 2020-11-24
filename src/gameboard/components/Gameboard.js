@@ -3,13 +3,6 @@ import React, { Component } from 'react';
 import Clues from './Clues';
 
 class Gameboard extends Component {
-  // constructor(props){
-  //     super(props);
-
-  //     this.state = {
-  //         categories: []
-  //     }
-  // }
 
   render() {
 

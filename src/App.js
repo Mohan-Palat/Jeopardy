@@ -64,8 +64,6 @@ class App extends Component {
                                                                       categories={this.state.categories}/>}/>
 
               <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch} 
-                                                                            selectedCategories={this.state.categoryIds} 
-                                                                            categoriesHash ={categories} 
                                                                             selectedIDs = {this.state.categoryIds}/>}/>
 
               <Route path='/custom-settings' exact component={() => <Link to='/custom'><button>Start Game</button> </Link>}/>

@@ -8,24 +8,10 @@ class Search extends Component {
         
         this.state = {
             curValue: 0,
-            options: this.props.categoriesHash.map((cat)=>{
-                    return {value: cat.id,
-                            label: cat.category};
-                    })
         }
     }
 
-    getIndexFromValue=(value)=>{
-      let returnVal = -1;
-      this.state.options.forEach((option,index)=>{
-        if(option.value===value){
-          returnVal = index;
-        }
-      });
-
-      return returnVal;
-    }
-    // change state to currently selected value
+    // set state to selected value
     handleChange = (e)=>{
         this.setState({
             curValue: e.value,
@@ -35,38 +21,36 @@ class Search extends Component {
     // pass ID up to App
     handleSubmit = (e)=>{
       e.preventDefault();
-      let tmpOptions = this.state.options;
-      
-      // get index of selected option
-      const indexToRemove = this.getIndexFromValue(this.state.curValue);
-
-      // Remove at selected Index
-      tmpOptions = tmpOptions.splice(indexToRemove,1);
-      
-      console.log('[Search.js] tmpOptions:',tmpOptions);
-      this.setState({
-        options: tmpOptions
-      });
 
       this.props.addSearch(this.state.curValue);
   }
 
+  // generates an array of options for the Select
+  // will not accept any option that has an ID in the selectedIds array-
+  // returns an array of selectable options
   getAvailableOptions(selectedIds){
+    let selectableOptions = [];
+    categories.forEach((cat)=>{
+      if(!selectedIds.includes(cat.id)){
+        const newOption = {
+          value: cat.id,
+          label:cat.category
+        };
 
+        selectableOptions.push(newOption);
+      }
+    });
+
+    return selectableOptions
   }
 
   render() {
-    const allCategories = this.props.categoriesHash
-
-    //loop through categories and match with categories data file to display topics on screen
-    let categories = allCategories.filter((id) => {
-      
-    })
+    const menuOptions = this.getAvailableOptions(this.props.selectedIDs)
 
     return (
       <>
         <form onSubmit = {this.handleSubmit}>
-            <Select options={this.state.options} onChange={this.handleChange}/>
+            <Select options={menuOptions} onChange={this.handleChange}/>
             <input type="submit" value="submit"/>
         </form>
         <h3>Selected Categories</h3>
