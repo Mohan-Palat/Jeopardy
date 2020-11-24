@@ -9,7 +9,7 @@ import categoryIds from './data/categoryIds';
 import { Route, Link } from 'react-router-dom';
 import CluePopup from './CluePopup';
 import AnswerDisplay from './AnswerDisplay';
-import Search from './Search';
+import Search from './customGame/Search';
 // import { withRouter } from "react-router";
 import axios from 'axios'
 
@@ -29,6 +29,10 @@ class App extends Component {
       categories: [],
     }
   }
+
+  //   shouldComponentUpdate() {
+  //     return true; // Will cause component to never re-render.
+  // }
 
   render() {
 

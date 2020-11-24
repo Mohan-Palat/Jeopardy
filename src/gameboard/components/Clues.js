@@ -3,14 +3,17 @@ import Clue from './Clue';
 
 class Clues extends Component {
   
+  // given a string, return fontSize with inversley proportional font size to str length
   scaleFontSize = (str)=>{
     const strLength = str.length;
 
-    return strLength;
+    return 1;
 
   }
 
   render() {
+    const cellStyle = this.scaleFontSize('zzz');
+
     const clues = this.props.clues.map((clue,index)=>{
         return <Clue clue={clue}
                      setClue={this.props.setClue}
@@ -19,7 +22,7 @@ class Clues extends Component {
     })
     return (
       <div className='jeopardy-column'>
-        <h3 className="clue-category">{this.props.title}</h3>
+        <h3 className="clue-category" stlye={{fontSize: 17}}>{this.props.title}</h3>
         {clues}
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import categories from './data/categories'
+import categories from '../data/categories'
 
 
 class Search extends Component {
