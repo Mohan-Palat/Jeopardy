@@ -10,6 +10,7 @@ import { Route, Link } from 'react-router-dom';
 import CluePopup from './CluePopup';
 import AnswerDisplay from './AnswerDisplay';
 import Search from './customGame/Search';
+import categories from './data/categories'
 // import { withRouter } from "react-router";
 import axios from 'axios'
 
@@ -56,8 +57,17 @@ class App extends Component {
           <div className="game-board">
               <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
               <Route path='/' exact component={() => <Link to='/custom-settings'><button>Custom Game</button> </Link>}/>
-              <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive} categories={this.state.categories}/>}/>
-              <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch} selectedCategories={this.state.categoryIds}/>}/>
+
+              <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} 
+                                                                      idNums={this.state.categoryIds} 
+                                                                      clueIsActive = {this.state.clueIsActive} 
+                                                                      categories={this.state.categories}/>}/>
+
+              <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch} 
+                                                                            selectedCategories={this.state.categoryIds} 
+                                                                            categoriesHash ={categories} 
+                                                                            selectedIDs = {this.state.categoryIds}/>}/>
+
               <Route path='/custom-settings' exact component={() => <Link to='/custom'><button>Start Game</button> </Link>}/>
               <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
           </div>
