@@ -105,3 +105,48 @@ body {
 .display-none {
   display: none;
 }
+
+.flip-container {
+  perspective: 2000px;
+}
+
+/* flip the pane when hovered */
+.modal:hover .flipper {
+  transform: rotateY(180deg);
+  /* transition-delay: 1s; */
+  
+}
+
+.flip-container, .front, .back {
+  width: 400px;
+  height: 400px;
+  background-color: black;
+}
+
+
+.flipper {
+  transition: 1.5s;
+  transform-style: preserve-3d;
+  position: relative;
+
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  background-color: navy;
+  width:400px;  
+}
+
+
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+
+.back {
+  transform: rotateY(180deg);
+}
