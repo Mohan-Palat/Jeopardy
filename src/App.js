@@ -47,8 +47,10 @@ class App extends Component {
        </div>
        <div id="main">
           <div className="game-board">
+            <div className='landing-buttons'>
               <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
               <Route path='/' exact component={() => <Link to='/custom-settings'><button>Custom Game</button> </Link>}/>
+            </div>
 
               <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} 
                                                                       idNums={this.state.categoryIds} 
