@@ -5,12 +5,12 @@ class Timer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      seconds: 10,
+      seconds: 15,
     };
   }
   componentDidMount() {
     console.log('In Mount')
-    this.interval = setInterval(() => this.timer(), 1000);
+    this.interval = setInterval(() => this.timer(), 1500);
   }
   render() {
     return (
