@@ -30,16 +30,8 @@ class App extends Component {
     }
   }
 
-  //   shouldComponentUpdate() {
-  //     return true; // Will cause component to never re-render.
-  // }
 
   render() {
-
-    // let gameboard = <NewGame getCategoryIds={this.getCategoryIds}/>
-    // if(this.state.categories.length === 6){
-    //   gameboard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive} categories={this.state.categories}/>
-    // }
 
     return (
       <>
@@ -54,8 +46,10 @@ class App extends Component {
        </div>
        <div id="main">
           <div className="game-board">
+            <div className='landing-buttons'>
               <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
               <Route path='/' exact component={() => <Link to='/custom-settings'><button>Custom Game</button> </Link>}/>
+            </div>
 
               <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} 
                                                                       idNums={this.state.categoryIds} 
@@ -104,8 +98,6 @@ class App extends Component {
             console.log(error);
         })
     });
-    console.log('CATEGORIES SET!!!', this.state.categories)
-
   }
 
   addIDFromSearch = (id) =>{
@@ -145,7 +137,7 @@ class App extends Component {
       //add to new array
       newArray.push(ids[randomIndex])
 
-      //remove from ids array
+      //remove from ids array, so that we don't randomly pick the same category again
       ids.splice(randomIndex,1)
     }
     
@@ -156,8 +148,7 @@ class App extends Component {
 
     this.getCategoriesFromIDs(this.state.categoryIds);
 
-    console.log('category ids after hitting new Game:' ,this.state.categoryIds)
-    // this.props.history.push('/random')
+    // console.log('category ids after hitting new Game:' ,this.state.categoryIds)
   }
 
   setScore = (userInput) => {

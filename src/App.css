@@ -1,12 +1,21 @@
 #root {
   width: 100%;
 }
+html {
+  background: url(https://ewscripps.brightspotcdn.com/24/0b/b93afd8a44249fe0a873593de367/jeopardy.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 100%
+  width: 100%;
+  color: white;
+  
 }
 /* Add borders for testing */
 /* #title, #main, .score {
