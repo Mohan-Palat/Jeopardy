@@ -62,7 +62,8 @@ class App extends Component {
               <Route path='/custom-settings' exact component={() => <Link to='/custom'><button>Start Game</button> </Link>}/>
               <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} 
                                                             idNums={this.state.categoryIds} 
-                                                            clueIsActive = {this.state.clueIsActive}/>}/>
+                                                            clueIsActive = {this.state.clueIsActive}
+                                                            categories={this.state.categories}/>}/>
           </div>
        </div>
        <br/>
@@ -105,9 +106,21 @@ class App extends Component {
     
     // Only do this if less than 6 categories
     if(this.state.categories.length<6){
-      this.setState(prevState=>({
-        categoryIds:[...prevState.categoryIds,id]
-      }));
+      
+      this.getCategoryFromID(id)
+        .then((response)=>{
+          //Push API output into categories array
+          this.setState(prevState=>({categories:[...prevState.categories,response.data],
+                                     categoryIds:[...prevState.categoryIds,id]
+                                    }), () => {
+                                                if(this.state.categories.length === 6){
+                                                  this.setHasBeenClicked()
+                                                }
+          });
+        })
+        .catch((error)=>{
+          console.log(error);
+        });
     }
     console.log(this.state.categoryIds);
   }
