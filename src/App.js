@@ -100,9 +100,11 @@ class App extends Component {
     });
   }
 
+  // Take ID passed from search component and add a category
   addIDFromSearch = (id) =>{
-    // Only do this for valid inputs
-    if(id!==-1){
+    
+    // Only do this if less than 6 categories
+    if(this.state.categories.length<6){
       this.setState(prevState=>({
         categoryIds:[...prevState.categoryIds,id]
       }));
