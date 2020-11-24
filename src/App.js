@@ -36,10 +36,11 @@ class App extends Component {
 
   render() {
 
-    let gameboard = <NewGame getCategoryIds={this.getCategoryIds}/>
-    if(this.state.categoryIds.length === 6){
-      gameboard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive} categories={this.state.categories}/>
-    }
+    // let gameboard = <NewGame getCategoryIds={this.getCategoryIds}/>
+    // if(this.state.categories.length === 6){
+    //   gameboard = <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive} categories={this.state.categories}/>
+    // }
+
     return (
       <>
        <h1 id="title">Jeopardy</h1>
@@ -54,21 +55,12 @@ class App extends Component {
        <div id="main">
          <Search addSearch = {this.addIDFromSearch}/>
           <div className="game-board">
-              {/* <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
+              <Route path='/' exact component={() => <NewGame getCategoryIds={this.getCategoryIds}/>}/>
               <Route path='/' exact component={() => <Link to='/custom-settings'><button>Custom Game</button> </Link>}/>
               <Route path='/random' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive} categories={this.state.categories}/>}/>
               <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch} selectedCategories={this.state.categoryIds}/>}/>
               <Route path='/custom-settings' exact component={() => <Link to='/custom'><button>Start Game</button> </Link>}/>
-              <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/> */}
-
-              {gameboard}
-
-              {/* <NewGame getCategoryIds={this.getCategoryIds}/> */}
-              {/* <Route path='/' exact component={() => <Link to='/custom-settings'><button>Custom Game</button> </Link>}/> */}
-              {/* <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive} categories={this.state.categories}/> */}
-              {/* <Route path='/custom-settings' exact component={() => <Search addSearch ={this.addIDFromSearch} selectedCategories={this.state.categoryIds}/>}/> */}
-              {/* <Route path='/custom-settings' exact component={() => <Link to='/custom'><button>Start Game</button> </Link>}/> */}
-              {/* <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/> */}
+              <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
           </div>
        </div>
        <br/>
@@ -94,14 +86,17 @@ class App extends Component {
         .then((response)=>{
 
             //Push API output into categories array
-            this.setState(prevState=>({
-                categories:[...prevState.categories,response.data]
-            }));
+            this.setState(prevState=>({categories:[...prevState.categories,response.data]}), () => {
+              if(this.state.categories.length === 6){
+                this.setHasBeenClicked()
+              }
+            });
         })
         .catch((error)=>{
             console.log(error);
         })
     });
+    console.log('CATEGORIES SET!!!', this.state.categories)
 
   }
 
@@ -188,6 +183,19 @@ class App extends Component {
     console.log('setClue called',clue);
     console.log('VALUE OF HAS BEEN CLICKED >>> ', hasBeenClicked)
     console.log('event >>> ', e)
+
+    // update categories array
+    let categories = this.state.categories
+
+    // find clue and update value of hasBeenClicked
+    categories.forEach((category) => {
+      category.clues.forEach((cat_clue) => {
+        if(cat_clue === clue){
+          cat_clue.hasBeenClicked = true
+        }
+      })
+    })
+
     console.log(this.state.clueIsActive);
       if(!this.state.clueIsActive){
         this.setState({
@@ -195,9 +203,25 @@ class App extends Component {
           inputDisabled: false,
           clueIsActive: true,
           showClue: true,
+          categories: categories,
         });
       }
       
+  }
+
+  setHasBeenClicked = () => {
+    // make a copy of categories
+    let categories = this.state.categories
+
+    // set each clue to have property hasBeenClicked = false
+    categories.forEach((category) => {
+      category.clues.forEach((clue) => {
+        clue.hasBeenClicked = false
+      })
+    })
+
+    //set categories state
+    this.setState({categories: categories})
   }
 }
 
