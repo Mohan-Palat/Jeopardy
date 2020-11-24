@@ -10,7 +10,6 @@ import { Route, Link } from 'react-router-dom';
 import CluePopup from './CluePopup';
 import AnswerDisplay from './AnswerDisplay';
 import Search from './customGame/Search';
-import categories from './data/categories'
 // import { withRouter } from "react-router";
 import axios from 'axios'
 
@@ -67,7 +66,9 @@ class App extends Component {
                                                                             selectedIDs = {this.state.categoryIds}/>}/>
 
               <Route path='/custom-settings' exact component={() => <Link to='/custom'><button>Start Game</button> </Link>}/>
-              <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} idNums={this.state.categoryIds} clueIsActive = {this.state.clueIsActive}/>}/>
+              <Route path='/custom' exact component={() => <Gameboard setClue={this.setClue} 
+                                                            idNums={this.state.categoryIds} 
+                                                            clueIsActive = {this.state.clueIsActive}/>}/>
           </div>
        </div>
        <br/>
