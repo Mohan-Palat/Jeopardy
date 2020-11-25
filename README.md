@@ -20,7 +20,7 @@ The current version supports one player and allows the user to choose between tw
 
 
 ## Wireframes & Planning
-![Wireframe](/documentation/images/JeopardyWireframe.png "Wireframe")
+![Wireframe](/documentation/images/JeopardyWireframe.pdf "Wireframe")
 
 
 ## User Stories/ Features
@@ -55,8 +55,12 @@ The current version supports one player and allows the user to choose between tw
 - Answers from API are inconsistent and may contain additional characters (e.g., 'a train' instead of just 'train').  This results in incorrect answers on occasion. 
 
 ## Bonus Features
+- React Router: In order to render a random game board and a custom game board we decided to use React Router 
+to make the routes for our App
+- React Hooks: In our New Game component, we had to route to a new page while also rendering data for the new game. In order to tackle this challenge, we used the useHistory hook
 
 
 ## What we learned
 
-* The dynamic of group projects can be challenging.  Decision making and work division are some of the more difficult aspects.  There are many benefits, though.  Problem solutioning and idea generation were easier with mutiple people. 
+* The dynamic of group projects can be challenging.  Decision making and work division are some of the more difficult aspects.  There are many benefits, though.  Problem solutioning and idea generation were easier with mutiple people.
+* Something we learned was the importance of understanding the React component lifecycle. Some of our functions weren't working as expected because we didn't take the lifecycle into account. However, after taking this into consideration, we were able to fix our App and get it running the right way. 
