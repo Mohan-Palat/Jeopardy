@@ -40,7 +40,7 @@ Before we started development we created a map of components with their respecti
 * Javascript
 * React
 * Axios
-* https://jservice.io/ - Jeopardy questions API\
+* https://jservice.io/ - Jeopardy questions API
 
 
 ## Future features
