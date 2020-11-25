@@ -5,13 +5,13 @@ A browser based version of the classic television game show.  The application wa
 The current version supports one player and allows the user to choose between two game modes.  The first selects six random categories with five questions (i.e, clues) like the traditional game show.  The second mode allows users to select six categories from a predefined list.  
 
 ## Home Page
-![Home Page](/documentation/JeopardyHomePage.png "Home Page")
+![Home Page](/documentation/images/JeopardyHomePage.png "Home Page")
 
 ## Game Board
-![Game Board](/documentation/JeopardyGameBoard.png "Game Board")
+![Game Board](/documentation/images/JeopardyGameBoard.png "Game Board")
 
 ## Clue
-![Clue](/documentation/JeopardyClue.png "Clue")
+![Clue](/documentation/images/JeopardyClue.png "Clue")
  
 
 ## Description
