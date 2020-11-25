@@ -8,7 +8,9 @@
 ## User Stories/ Features
 
 ## Technologies (API)
+React
 
+https://jservice.io/ - Jeopardy questions API
 ## Future features
 
 ## Known Issues
