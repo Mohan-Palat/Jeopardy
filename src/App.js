@@ -10,7 +10,6 @@ import { Route, Link } from 'react-router-dom';
 import CluePopup from './CluePopup';
 import AnswerDisplay from './AnswerDisplay';
 import Search from './customGame/Search';
-// import { withRouter } from "react-router";
 import axios from 'axios'
 
 class App extends Component {
@@ -138,7 +137,6 @@ class App extends Component {
   }
 
   getCategoryIds = () => {
-    console.log('getCategoryIds called')
     // Initialize variables
     let randomIndex = 0;
     let ids = categoryIds                     // Ids from whole dataset
@@ -161,29 +159,30 @@ class App extends Component {
       categoryIds: newArray
     })
 
+    // call API with stored ids to get category details
     this.getCategoriesFromIDs(this.state.categoryIds);
-
-    // console.log('category ids after hitting new Game:' ,this.state.categoryIds)
   }
 
   setScore = (userInput) => {
-    // will check if user input = currentClue.answer
-    // if so, increment score
-    // it not, decrement score
-    //set Score will be called from within in this method
+    // initialize new score to a default value
     let newScore = 0;
+
+    // check if user input = currentClue.answer
     if(userInput.toLowerCase() === this.state.currentClue.answer.toLocaleLowerCase()){
+      // if so, increment score
       newScore = this.state.score + this.state.currentClue.value
+      
       // Set flag when user reponded accurately
       this.setState({answeredCorrectly: true})
     } else {
+      // it not, decrement score
       newScore = this.state.score - this.state.currentClue.value
+      
       // Set flag when response was wrong (or time expired)
       this.setState({answeredCorrectly: false})
     }
-    
-    console.log('new score: ', newScore) 
-    
+   
+    //set Score will be called from within in this method
     this.setState({
       score: newScore,
       inputDisabled: true,
@@ -194,12 +193,9 @@ class App extends Component {
   // Sets clue passed from Clue and enables Input
   setClue = (e, clue, hasBeenClicked) => {
     e.preventDefault()
-    console.log('setClue called',clue);
-    console.log('VALUE OF HAS BEEN CLICKED >>> ', hasBeenClicked)
-    console.log('event >>> ', e)
 
     // update categories array
-    let categories = this.state.categories
+    let categories = this.state.categories        // make a copy of this.state.categories and modify the copy
 
     // find clue and update value of hasBeenClicked
     categories.forEach((category) => {
@@ -210,16 +206,15 @@ class App extends Component {
       })
     })
 
-    console.log(this.state.clueIsActive);
-      if(!this.state.clueIsActive){
-        this.setState({
-          currentClue: clue,
-          inputDisabled: false,
-          clueIsActive: true,
-          showClue: true,
-          categories: categories,
-        });
-      }
+    if(!this.state.clueIsActive){
+      this.setState({
+        currentClue: clue,
+        inputDisabled: false,
+        clueIsActive: true,
+        showClue: true,
+        categories: categories,
+      });
+    }
       
   }
 
