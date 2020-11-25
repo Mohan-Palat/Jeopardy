@@ -1,5 +1,6 @@
 # Jeopardy
 
+## Description
 A browser based version of the classic television game show.  The application was written using the React Javascript library resulting in a single-page, dynamically updating solution.  Its data source is a third party API called jService (https://jservice.io/).
 
 The current version supports one player and allows the user to choose between two game modes.  The first selects six random categories with five questions (i.e, clues) like the traditional game show.  The second mode allows users to select six categories from a predefined list.  
@@ -14,14 +15,30 @@ The current version supports one player and allows the user to choose between tw
 ![Clue](/documentation/images/JeopardyClue.png "Clue")
  
 
-## Description
-### Link to deployment here
+### Link
+
+
 
 ## Wireframes & Planning
 
 ## User Stories/ Features
+- As a user, I should be given 6 random categories for the first game mode
+- As a user, I should be able to choose the categories I want from a predefined list in the second mode.
+- As a user, when I get a question correct, my score should increase
+- As a user, when I get a question incorrect, my score should decrease
+- As a user, I should be able to select a question
+- As a user, I should see 5 questions under each category
+- As a user, I should be able to enter my answer and have it validated
+- As a user, when I answer a question, I should not be able to answer it again
+
 
 ## Technologies (API)
+* HTML
+* CSS
+* Javascript
+* React
+* Axios
+
 
 ## Future features
 - Multiplayer option.
