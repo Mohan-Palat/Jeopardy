@@ -53,7 +53,7 @@ class Search extends Component {
             <Select options={menuOptions} onChange={this.handleChange}/>
             <input type="submit" value="submit"/>
         </form>
-        <h3>Selected Categories</h3>
+        {/* <h3>Selected Categories</h3> */}
 
       </>
     );

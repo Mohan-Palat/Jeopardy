@@ -10,7 +10,7 @@ class Gameboard extends Component {
     console.log('current state (render before if): ',this.props.categories);
 
     if(this.props.categories.length === 6){
-         console.log('catergoies has data!')
+      // render clues
          catsToRender = this.props.categories.map((category)=>{
             return <Clues title={category.title}
                               clues={category.clues}

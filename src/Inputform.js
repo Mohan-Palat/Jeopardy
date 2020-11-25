@@ -28,8 +28,8 @@ class Inputform extends Component {
   }
 
   onTextBoxChange = (event) => {
-    // console.log ('Response', )
 
+    // update this.state.answer which is the value of the input text field on the form
     this.setState({
       answer: event.target.value
     })
@@ -37,7 +37,8 @@ class Inputform extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // console.log ('User response from inputform', this.state.response)
+    
+    // check if input is correct Answer and then update score
     this.props.setScore(this.state.answer)
 
     this.setState({

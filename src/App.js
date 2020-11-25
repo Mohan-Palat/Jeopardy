@@ -163,6 +163,8 @@ class App extends Component {
     this.getCategoriesFromIDs(this.state.categoryIds);
   }
 
+  // this method is called to determine if the users input is the correct answer
+  // after this, the score gets updated accordingly
   setScore = (userInput) => {
     // initialize new score to a default value
     let newScore = 0;
@@ -218,6 +220,7 @@ class App extends Component {
       
   }
 
+  // sets all clues hasBeenClicked = false before they're rendered on the board
   setHasBeenClicked = () => {
     // make a copy of categories
     let categories = this.state.categories

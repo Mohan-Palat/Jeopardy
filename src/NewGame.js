@@ -8,10 +8,12 @@ const NewGame = (props) =>  {
     const history = useHistory();
     const handleSubmit = (event) => {
       event.preventDefault();
-      // console.log ('User clicked new game')
+
+      // get random category IDs to populate the random game with
       props.getCategoryIds()
       
-      // route to correct path
+      // route to correct path, since we could not route and render data at the same time, we had to use 
+      // this react hook useHistory here
       history.push('/random')
     }
     return (

@@ -16,6 +16,7 @@ class Clue extends Component {
   handleClick = (e) =>{
       e.preventDefault();
 
+      // only runs if clue has not been clicked, this is how we make sure a user cannot answer a question twice
       if(this.props.clue.hasBeenClicked===false && this.props.clueIsActive === false){
         this.setState({displayValue: this.props.clue.question}, () => {
           this.props.setClue(e, this.props.clue, true);
@@ -26,6 +27,7 @@ class Clue extends Component {
   render() {
     return (
       <div className='clue' onClick={(e) => this.handleClick(e)}>
+        {/* change class based off the value of props.clue.hasBeenClicked */}
       <div className={this.props.clue.hasBeenClicked ? 'clue-clicked clue-contents':'clue-contents'}> ${this.state.displayValue}</div>
       </div>
     );

@@ -6,7 +6,6 @@ class Clues extends Component {
   // given a string, return fontSize with inversley proportional font size to str length
   scaleFontSize = (str)=>{
     const strLength = str.length;
-
     return 1;
 
   }
