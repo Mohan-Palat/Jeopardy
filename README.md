@@ -1,7 +1,7 @@
 # Jeopardy
 
 ## Description
-A browser based version of the classic television game show.  The application was written using the React Javascript library resulting in a single-page, dynamically updating solution.  Its data source is a third party API called jService (https://jservice.io/).
+A browser based version of the classic television game show.  The application was written using React resulting in a single-page, dynamically updating solution.  Its data source is a third party API called jService (https://jservice.io/).
 
 The current version supports one player and allows the user to choose between two game modes.  The first selects six random categories with five questions (i.e, clues) like the traditional game show.  The second mode allows users to select six categories from a predefined list.  
 
@@ -20,6 +20,8 @@ The current version supports one player and allows the user to choose between tw
 
 
 ## Wireframes & Planning
+![Wireframe](/planning/Jeopardy-Wireframe.pdf "Wireframe")
+
 
 ## User Stories/ Features
 - As a user, I should be given 6 random categories for the first game mode
@@ -32,7 +34,7 @@ The current version supports one player and allows the user to choose between tw
 - As a user, when I answer a question, I should not be able to answer it again
 
 
-## Technologies (API)
+## Technologies
 * HTML
 * CSS
 * Javascript
@@ -56,3 +58,5 @@ The current version supports one player and allows the user to choose between tw
 
 
 ## What we learned
+
+* The dynamic of group projects can be challenging.  Decision making and work division are some of the more difficult aspects.  There are many benefits, though.  Problem solutioning and idea generation were easier with mutiple people. 
