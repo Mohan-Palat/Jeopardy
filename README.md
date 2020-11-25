@@ -5,6 +5,8 @@ A browser based version of the classic television game show.  The application wa
 
 The current version supports one player and allows the user to choose between two game modes.  The first selects six random categories with five questions (i.e, clues) like the traditional game show.  The second mode allows users to select six categories from a predefined list.  
 
+You can find our App deployed on [Heroku](https://jeopardy-app-angeline.herokuapp.com/#/).
+
 ## Home Page
 ![Home Page](/documentation/images/JeopardyHomePage.png "Home Page")
 
@@ -14,13 +16,11 @@ The current version supports one player and allows the user to choose between tw
 ## Clue
 ![Clue](/documentation/images/JeopardyClue.png "Clue")
  
-
-### Link
-
-
-
 ## Wireframes & Planning
-![Wireframe](/documentation/images/JeopardyWireframe.pdf "Wireframe")
+As a part of our planning, we created an initial wireframe that you can find [here](https://github.com/angelinejacob/Jeopardy/blob/main/planning/Jeopardy-Wireframe.pdf). Our current web layout stays close to this design, though it varies a little.
+
+Before we started development we created a map of components with their respective states and props. Since then, many changes have been made to our component structure. However, this initial plan will give you an idea of how our app is laid out. You can find our Component structure [here](https://github.com/angelinejacob/Jeopardy/blob/main/planning/Component-Structure.pdf).
+
 
 
 ## User Stories/ Features
