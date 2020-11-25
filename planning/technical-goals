@@ -2,11 +2,19 @@ Technical Goals
 
 MVP:
 
-Generate a gameboard with cells that reference a Jeopardy question pulled from the Jeopardy API
+Generate a gameboard with cells that each reference a Jeopardy clue 
+pulled from the Jeopardy API
 
 Bronze:
 
+Basic game logic. Cells (Clues) may only be visited once. 
+A correct answer will add to your score by its value, 
+an incorrect answer will decrease it
+
 Silver:
+
+Allow user to select their own categories.
+Add styling to make the game more appealing.
 
 Gold:
 
