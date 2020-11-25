@@ -20,7 +20,7 @@ The current version supports one player and allows the user to choose between tw
 
 
 ## Wireframes & Planning
-![Wireframe](/documentation/images/JeopardyWireframe.pdf "Wireframe")
+![Wireframe](/documentation/images/JeopardyWireframe.png "Wireframe")
 
 
 ## User Stories/ Features
