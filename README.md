@@ -40,14 +40,9 @@ Before we started development we created a map of components with their respecti
 * Javascript
 * React
 * Axios
+* https://jservice.io/ - Jeopardy questions API\
 
-<<<<<<< HEAD
-## Technologies (API)
-React
-=======
->>>>>>> b50e3ce2e7630cd58636b3cb0df2180630e934d5
 
-https://jservice.io/ - Jeopardy questions API
 ## Future features
 - Multiplayer option.
 - Include Jeopardy sound bites and virtual host responses.
@@ -64,9 +59,11 @@ https://jservice.io/ - Jeopardy questions API
 - React Router: In order to render a random game board and a custom game board we decided to use React Router 
 to make the routes for our App
 - React Hooks: In our New Game component, we had to route to a new page while also rendering data for the new game. In order to tackle this challenge, we used the useHistory hook
+- Parsing answers to forgive slight mispelling.
 
 
 ## What we learned
 
 * The dynamic of group projects can be challenging.  Decision making and work division are some of the more difficult aspects.  There are many benefits, though.  Problem solutioning and idea generation were easier with mutiple people.
-* Something we learned was the importance of understanding the React component lifecycle. Some of our functions weren't working as expected because we didn't take the lifecycle into account. However, after taking this into consideration, we were able to fix our App and get it running the right way. 
+* Something we learned was the importance of understanding the React component lifecycle. Some of our functions weren't working as expected because we didn't take the lifecycle into account. However, after taking this into consideration, we were able to fix our App and get it running the right way.
+* Branching github repositories can save a lot of time when one part of the project is not working. We were able to continue working on other parts without the buggy code getting in the way.
